@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Abdelrahman & Amaal Wedding</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo&display=swap" rel="stylesheet" />
+  <style>
+    body {
+      font-family: 'Cairo', sans-serif;
+      background: linear-gradient(to bottom, #fff9f5, #ffe8e8);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem 1rem;
+      color: #333;
+      min-height: 100vh;
+      box-sizing: border-box;
+      margin: 0;
+    }
+    h1 {
+      color: #c94f7c;
+      margin-top: 1rem;
+      font-size: 2rem;
+      text-align: center;
+    }
+    p {
+      text-align: center;
+      margin-bottom: 0.5rem;
+    }
+    form {
+      background: white;
+      padding: 2rem 1.5rem;
+      border-radius: 12px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+      max-width: 420px;
+      width: 100%;
+      margin-top: 2rem;
+      box-sizing: border-box;
+    }
+    .language-toggle {
+      display: flex;
+      gap: 0.5rem;
+      justify-content: center;
+      margin-bottom: 1rem;
+    }
+    .language-btn {
+      background: linear-gradient(to right, #f57aa3, #c94f7c);
+      color: white;
+      border: none;
+      font-weight: bold;
+      padding: 0.5rem 1rem;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: transform 0.2s ease;
+    }
+    .language-btn:hover {
+      transform: scale(1.05);
+    }
+    input, button {
+      width: 100%;
+      padding: 0.9rem;
+      margin-top: 1rem;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      font-size: 1rem;
+      box-sizing: border-box;
+    }
+    button {
+      background: linear-gradient(to right, #c94f7c, #f57aa3);
+      color: white;
+      border: none;
+      font-weight: bold;
+      transition: transform 0.2s ease, box-shadow 0.3s ease;
+    }
+    button:hover {
+      transform: scale(1.05);
+      box-shadow: 0 4px 12px rgba(201, 79, 124, 0.3);
+    }
+    .message {
+      margin-top: 2rem;
+      background: #fff6fb;
+      padding: 1.2rem;
+      border-left: 5px solid #c94f7c;
+      border: 2px dashed #c94f7c;
+      box-shadow: 0 0 10px rgba(201, 79, 124, 0.1);
+      display: none;
+      border-radius: 8px;
+      text-align: center;
+      max-width: 420px;
+      width: 100%;
+      box-sizing: border-box;
+      animation: fadeInDown 0.8s ease forwards;
+    }
+    @keyframes fadeInDown {
+      0% {
+        opacity: 0;
+        transform: translateY(-20px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    .banner {
+      max-width: 380px;
+      width: 100%;
+      border-radius: 12px;
+      mix-blend-mode: multiply;
+      display: block;
+      margin: 0 auto;
+    }
+    #countdown {
+      margin-top: 1rem;
+      font-size: 1.2rem;
+      color: #a83962;
+      font-weight: bold;
+      text-align: center;
+    }
+    .add-calendar {
+      display: inline-block;
+      margin-top: 1.2rem;
+      background: #a83962;
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      padding: 0.8rem;
+      border-radius: 8px;
+      transition: background 0.3s ease;
+    }
+    .add-calendar:hover {
+      background: #902c50;
+    }
+    audio {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <audio autoplay loop>
+    <source src="https://www.chosic.com/wp-content/uploads/2021/01/Ikson-Lights.mp3" type="audio/mpeg" />
+    Your browser does not support the audio element.
+  </audio>
+
+  <img src="الفرح.jpg" alt="Wedding Banner" class="banner" />
+
+  <h1 id="title">👰🏻‍♀️🤵🏻💍❤️ You're Invited!</h1>
+  <div id="countdown"></div>
+  <p id="intro">Join us to celebrate the wedding of <strong>Abdelrahman & Amaal</strong></p>
+
+  <form id="rsvpForm">
+    <div class="language-toggle">
+      <button class="language-btn" type="button" onclick="switchLanguage('en')">EN</button>
+      <button class="language-btn" type="button" onclick="switchLanguage('ar')">AR</button>
+    </div>
+
+    <input type="text" id="name" placeholder="Your Name" required />
+    <input type="number" id="guests" placeholder="Number of Guests" min="1" required />
+
+    <button type="submit" id="submitButton">Confirm Attendance</button>
+  </form>
+
+  <div class="message" id="confirmationMessage">
+    <span id="thankYouMessage" style="display:block; font-weight:bold; font-size:1.1rem; color:#a83962;">
+      💌 حابين تشاركوا لحظتنا السعيدة؟ تأكيدك هو أول فرحة! ويسعدنا تكون جزء من قصتنا الجميلة… في انتظارك بكل حب 💖
+    </span>
+    <br /><br />
+    <div id="detailsAr">
+      📍 <strong>المكان:</strong> قاعـة قصـر الصيادلة - نقابة الصيادلة - طلخا<br />
+      🗓️ <strong>التاريخ:</strong> 24 يوليو 2025<br />
+      🕖 <strong>الساعة:</strong> 7:00 مساءً<br />
+      📌 <strong>اللوكيشن:</strong> <a href="https://g.co/kgs/47ND6P4" target="_blank">اضغط هنا</a><br />
+      📞 <strong>للتواصل:</strong> 01069420990
+    </div>
+    <div id="detailsEn" style="display:none">
+      📍 <strong>Venue:</strong> Pharmacists Hall – Talkha<br />
+      🗓️ <strong>Date:</strong> July 24, 2025<br />
+      🕖 <strong>Time:</strong> 7:00 PM<br />
+      📌 <strong>Location:</strong> <a href="https://g.co/kgs/47ND6P4" target="_blank">Click here</a><br />
+      📞 <strong>Contact:</strong> 01069420990
+    </div>
+    <a
+      class="add-calendar"
+      target="_blank"
+      href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Abdelrahman%20%26%20Amaal%20Wedding&dates=20250724T160000Z%2F20250724T190000Z&details=Wedding%20Party%20in%20Talkha%20at%20Pharmacists%20Hall&location=Pharmacists%20Hall%20Talkha&sf=true&output=xml"
+    >
+      📅 Add to Google Calendar
+    </a>
+  </div>
+
+  <script>
+    const form = document.getElementById('rsvpForm');
+    const message = document.getElementById('confirmationMessage');
+    const nameInput = document.getElementById('name');
+
+    form.addEventListener('submit', function (event) {
+      event.preventDefault();
+      const userName = nameInput.value.trim();
+      document.getElementById('thankYouMessage').innerText = `💌 شكراً يا ${userName} لتأكيد حضورك! في انتظارك بكل حب 💖`;
+      message.style.display = 'block';
+      form.style.display = 'none';
+    });
+
+    const countdown = document.getElementById('countdown');
+    const targetDate = new Date('2025-07-24T19:00:00').getTime();
+
+    const timer = setInterval(() => {
+      const now = new Date().getTime();
+      const distance = targetDate - now;
+      if (distance < 0) {
+        clearInterval(timer);
+        countdown.innerHTML = "🎊 It's wedding time! 🎊";
+        return;
+      }
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+      countdown.innerHTML = `⏳ ${days}d ${hours}h ${minutes}m ${seconds}s left until the wedding!`;
+    }, 1000);
+
+    function switchLanguage(lang) {
+      if (lang === 'ar') {
+        document.getElementById('title').innerText = '👰🏻‍♀️🤵🏻💍❤️ مدعوون لحفل الزفاف!';
+        document.getElementById('intro').innerHTML = 'انضموا إلينا للاحتفال بزفاف <strong>عبد الرحمن وآمال</strong>';
+        nameInput.placeholder = 'الاسم';
+        document.getElementById('guests').placeholder = 'عدد الحضور';
+        document.getElementById('submitButton').innerText = 'تأكيد الحضور';
+        document.getElementById('detailsAr').style.display = 'block';
+        document.getElementById('detailsEn').style.display = 'none';
+      } else {
+        document.getElementById('title').innerText = ".👰🏻‍♀️🤵🏻💍❤️ You're Invited!";
+        document.getElementById('intro').innerHTML = 'Join us to celebrate the wedding of <strong>Abdelrahman & Amaal</strong>';
+        nameInput.placeholder = 'Your Name';
+        document.getElementById('guests').placeholder = 'Number of Guests';
+        document.getElementById('submitButton').innerText = 'Confirm Attendance';
+        document.getElementById('detailsAr').style.display = 'none';
+        document.getElementById('detailsEn').style.display = 'block';
+      }
+    }
+  </script>
+</body>
+</html>
