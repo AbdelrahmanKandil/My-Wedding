@@ -1,14 +1,21 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ar" dir="rtl">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Abdelrahman & Amaal Wedding</title>
-  <link href="https://fonts.googleapis.com/css2?family=Cairo&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&display=swap" rel="stylesheet" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
   <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
     body {
       font-family: 'Cairo', sans-serif;
-      background: linear-gradient(to bottom, #fff9f5, #ffe8e8);
+      background: linear-gradient(135deg, #fff9f5 0%, #ffe8e8 50%, #ffd6e8 100%);
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -16,229 +23,662 @@
       padding: 2rem 1rem;
       color: #333;
       min-height: 100vh;
-      box-sizing: border-box;
-      margin: 0;
+      position: relative;
+      overflow-x: hidden;
     }
-    h1 {
-      color: #c94f7c;
-      margin-top: 1rem;
-      font-size: 2rem;
-      text-align: center;
-    }
-    p {
-      text-align: center;
-      margin-bottom: 0.5rem;
-    }
-    form {
-      background: white;
-      padding: 2rem 1.5rem;
-      border-radius: 12px;
-      box-shadow: 0 6px 20px rgba(0,0,0,0.15);
-      max-width: 420px;
+
+    .hearts {
+      position: fixed;
+      top: 0;
+      left: 0;
       width: 100%;
-      margin-top: 2rem;
-      box-sizing: border-box;
+      height: 100%;
+      pointer-events: none;
+      z-index: -1;
     }
-    .language-toggle {
-      display: flex;
-      gap: 0.5rem;
-      justify-content: center;
-      margin-bottom: 1rem;
+
+    .heart {
+      position: absolute;
+      color: rgba(201, 79, 124, 0.1);
+      animation: float 6s ease-in-out infinite;
     }
-    .language-btn {
-      background: linear-gradient(to right, #f57aa3, #c94f7c);
-      color: white;
-      border: none;
-      font-weight: bold;
-      padding: 0.5rem 1rem;
-      border-radius: 8px;
-      cursor: pointer;
-      transition: transform 0.2s ease;
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0px) rotate(0deg); }
+      50% { transform: translateY(-20px) rotate(180deg); }
     }
-    .language-btn:hover {
-      transform: scale(1.05);
-    }
-    input, button {
+
+    .main-content {
+      display: block;
       width: 100%;
-      padding: 0.9rem;
-      margin-top: 1rem;
-      border-radius: 8px;
-      border: 1px solid #ccc;
-      font-size: 1rem;
-      box-sizing: border-box;
+      max-width: 600px;
+      animation: slideInUp 0.8s ease-out;
     }
-    button {
-      background: linear-gradient(to right, #c94f7c, #f57aa3);
-      color: white;
-      border: none;
-      font-weight: bold;
-      transition: transform 0.2s ease, box-shadow 0.3s ease;
-    }
-    button:hover {
-      transform: scale(1.05);
-      box-shadow: 0 4px 12px rgba(201, 79, 124, 0.3);
-    }
-    .message {
-      margin-top: 2rem;
-      background: #fff6fb;
-      padding: 1.2rem;
-      border-left: 5px solid #c94f7c;
-      border: 2px dashed #c94f7c;
-      box-shadow: 0 0 10px rgba(201, 79, 124, 0.1);
-      display: none;
-      border-radius: 8px;
-      text-align: center;
-      max-width: 420px;
-      width: 100%;
-      box-sizing: border-box;
-      animation: fadeInDown 0.8s ease forwards;
-    }
-    @keyframes fadeInDown {
-      0% {
+
+    @keyframes slideInUp {
+      from {
         opacity: 0;
-        transform: translateY(-20px);
+        transform: translateY(30px);
       }
-      100% {
+      to {
         opacity: 1;
         transform: translateY(0);
       }
     }
-    .banner {
-      max-width: 380px;
-      width: 100%;
-      border-radius: 12px;
-      mix-blend-mode: multiply;
-      display: block;
-      margin: 0 auto;
-    }
-    #countdown {
+
+    h1 {
+      color: #c94f7c;
       margin-top: 1rem;
-      font-size: 1.2rem;
-      color: #a83962;
-      font-weight: bold;
+      font-size: 2.2rem;
       text-align: center;
+      font-weight: 700;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+      animation: pulse 2s ease-in-out infinite alternate;
     }
+
+    @keyframes pulse {
+      from { transform: scale(1); }
+      to { transform: scale(1.05); }
+    }
+
+    p {
+      text-align: center;
+      margin-bottom: 0.5rem;
+      line-height: 1.6;
+    }
+
+    .wedding-banner {
+      max-width: 100%;
+      width: 100%;
+      border-radius: 20px;
+      box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+      display: block;
+      margin: 0 auto 2rem;
+      transition: transform 0.3s ease;
+    }
+
+    .wedding-banner:hover {
+      transform: scale(1.02);
+    }
+
+    form {
+      background: rgba(255, 255, 255, 0.95);
+      padding: 2.5rem 2rem;
+      border-radius: 20px;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255,255,255,0.2);
+      max-width: 500px;
+      width: 100%;
+      margin: 2rem auto;
+    }
+
+    .language-toggle {
+      display: flex;
+      gap: 0.5rem;
+      justify-content: center;
+      margin-bottom: 2rem;
+    }
+
+    .language-btn {
+      background: linear-gradient(45deg, #f57aa3, #c94f7c);
+      color: white;
+      border: none;
+      font-weight: 600;
+      padding: 0.8rem 1.5rem;
+      border-radius: 25px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(201, 79, 124, 0.3);
+    }
+
+    .language-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(201, 79, 124, 0.4);
+    }
+
+    .language-btn.active {
+      background: linear-gradient(45deg, #c94f7c, #a83962);
+    }
+
+    .input-group {
+      position: relative;
+      margin-bottom: 1.5rem;
+    }
+
+    .input-group i {
+      position: absolute;
+      left: 15px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #c94f7c;
+      z-index: 1;
+    }
+
+    input, select {
+      width: 100%;
+      padding: 1rem 1rem 1rem 45px;
+      border-radius: 15px;
+      border: 2px solid #e1e1e1;
+      font-size: 1rem;
+      font-family: 'Cairo', sans-serif;
+      transition: all 0.3s ease;
+      background: rgba(255,255,255,0.9);
+    }
+
+    input:focus, select:focus {
+      outline: none;
+      border-color: #c94f7c;
+      box-shadow: 0 0 20px rgba(201, 79, 124, 0.2);
+      transform: translateY(-2px);
+    }
+
+    button[type="submit"] { /* استهداف زر الإرسال تحديدًا */
+      width: 100%;
+      padding: 1.2rem;
+      margin-top: 1rem;
+      border-radius: 15px;
+      border: none;
+      font-size: 1.1rem;
+      font-weight: 600;
+      background: linear-gradient(45deg, #c94f7c, #f57aa3);
+      color: white;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 8px 25px rgba(201, 79, 124, 0.3);
+      font-family: 'Cairo', sans-serif;
+    }
+
+    button[type="submit"]:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 15px 35px rgba(201, 79, 124, 0.4);
+    }
+    
+    button[type="submit"]:disabled {
+      background: linear-gradient(45deg, #aaa, #ccc);
+      cursor: not-allowed;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+      transform: translateY(0);
+    }
+
+
+    .message {
+      margin-top: 2rem;
+      background: linear-gradient(135deg, #fff6fb, #ffe8f3);
+      padding: 2rem;
+      border-radius: 20px;
+      border: 2px solid #c94f7c;
+      box-shadow: 0 15px 35px rgba(201, 79, 124, 0.2);
+      display: none;
+      text-align: center;
+      max-width: 500px;
+      width: 100%;
+      margin-left: auto;
+      margin-right: auto;
+      animation: fadeInScale 0.8s ease forwards;
+    }
+
+    @keyframes fadeInScale {
+      0% {
+        opacity: 0;
+        transform: scale(0.8);
+      }
+      100% {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    #countdown {
+      margin: 2rem 0;
+      font-size: 1.3rem;
+      color: #a83962;
+      font-weight: 700;
+      text-align: center;
+      background: rgba(255,255,255,0.8);
+      padding: 1rem;
+      border-radius: 15px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+
     .add-calendar {
       display: inline-block;
-      margin-top: 1.2rem;
-      background: #a83962;
+      margin-top: 1.5rem;
+      background: linear-gradient(45deg, #a83962, #c94f7c);
       color: white;
       text-decoration: none;
-      font-weight: bold;
-      padding: 0.8rem;
-      border-radius: 8px;
-      transition: background 0.3s ease;
+      font-weight: 600;
+      padding: 1rem 2rem;
+      border-radius: 25px;
+      transition: all 0.3s ease;
+      box-shadow: 0 8px 25px rgba(168, 57, 98, 0.3);
     }
+
     .add-calendar:hover {
-      background: #902c50;
+      transform: translateY(-3px);
+      box-shadow: 0 15px 35px rgba(168, 57, 98, 0.4);
     }
-    audio {
+
+    .social-share {
+      margin-top: 2rem;
+      text-align: center;
+    }
+
+    .share-btn {
+      display: inline-block;
+      margin: 0 10px;
+      padding: 12px;
+      border-radius: 50%;
+      color: white;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    }
+
+    .share-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+    }
+
+    .whatsapp { background: #25D366; }
+    .facebook { background: #1877F2; }
+    .telegram { background: #0088cc; }
+
+    @media (max-width: 768px) {
+      body {
+        padding: 1rem 0.5rem;
+      }
+      h1 {
+        font-size: 1.8rem;
+      }
+      form {
+        padding: 2rem 1.5rem;
+      }
+    }
+
+    .sparkle {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .sparkle::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: linear-gradient(45deg, transparent, rgba(255,255,255,0.1), transparent);
+      transform: rotate(45deg);
+      animation: sparkle 3s linear infinite;
+    }
+
+    @keyframes sparkle {
+      0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+      100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+    }
+
+    .success-indicator {
+      color: #27ae60;
+      font-size: 1.1rem;
+      margin-top: 1rem;
+      text-align: center;
       display: none;
+    }
+
+    .confetti {
+      position: fixed;
+      top: -10px;
+      width: 10px;
+      height: 30px;
+      opacity: 0.8;
+      z-index: 1000;
+      pointer-events: none;
+      animation: confetti-fall 3s linear forwards;
+    }
+    
+    @keyframes confetti-fall {
+      0% {
+        transform: translateY(0vh) rotate(0deg);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(100vh) rotate(720deg);
+        opacity: 0;
+      }
     }
   </style>
 </head>
 <body>
-  <audio autoplay loop>
-    <source src="https://www.chosic.com/wp-content/uploads/2021/01/Ikson-Lights.mp3" type="audio/mpeg" />
-    Your browser does not support the audio element.
-  </audio>
+  <div class="hearts"></div>
 
-  <img src="الفرح.jpg" alt="Wedding Banner" class="banner" />
+  <div class="main-content" id="mainContent">
+    <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAwIiBoZWlnaHQ9IjIwMCIgdmlld0JveD0iMCAwIDQwMCAyMDAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSI0MDAiIGhlaWdodD0iMjAwIiBmaWxsPSJ1cmwoI2dyYWRpZW50KSIgcng9IjIwIi8+CjxkZWZzPgo8bGluZWFyR3JhZGllbnQgaWQ9ImdyYWRpZW50IiB4MT0iMCUiIHkxPSIwJSIgeDI9IjEwMCUiIHkyPSIxMDAlIj4KPHN0b3Agb2Zmc2V0PSIwJSIgc3R5bGU9InN0b3AtY29sb3I6I2Y1N2FhMztzdG9wLW9wYWNpdHk6MSIgLz4KPHN0b3Agb2Zmc2V0PSIxMDAlIiBzdHlsZT0ic3RvcC1jb2xvcjojYzk0ZjdjO3N0b3Atb3BhY2l0eToxIiAvPgo8L2xpbmVhckdyYWRpZW50Pgo8L2RlZnM+Cjx0ZXh0IHg9IjIwMCIgeT0iMTAwIiBmb250LWZhbWlseT0iQ2Fpcm8sIHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMjQiIGZvbnQtd2VpZ2h0PSJib2xkIiBmaWxsPSJ3aGl0ZSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZG9taW5hbnQtYmFzZWxpbmU9Im1pZGRsZSI+2LnYqNivINin2YTYsdmH2YXZhiDZiCDYotmF2KfZhDwvdGV4dD4KPHN2ZyB4PSIxNzAiIHk9IjYwIiB3aWR0aD0iNjAiIGhlaWdodD0iMjAiIGZpbGw9IndoaXRlIj4KPHN2ZyB2aWV3Qm94PSIwIDAgMjQgMjQiIGZpbGw9ImN1cnJlbnRDb2xvciI+CjxwYXRoIGQ9Im0xMiAyMS4zNWwtMS40NS0xLjMyQzUuNCAyMC4wNCAyIDE2LjUgMiAxMkMyIDcuNTggNC41OCA1IDkgNWMxLjc0IDAgMy40MS42OSA0LjY0IDEuODhDMTQuNDEgOC4xOSAxNi4yNiA5IDE4IDljNC40MiAwIDcgMy41OCA3IDhzLTUuNCA4LjA0LTEwLjU1IDEwLjAzTDEyIDIxLjM1eiI+PC9wYXRoPgo8L3N2Zz4KPC9zdmc+Cjwvc3ZnPgo=" alt="Wedding Banner" class="wedding-banner sparkle" />
 
-  <h1 id="title">👰🏻‍♀️🤵🏻💍❤️ You're Invited!</h1>
-  <div id="countdown"></div>
-  <p id="intro">Join us to celebrate the wedding of <strong>Abdelrahman & Amaal</strong></p>
+    <h1 id="title">👰🏻‍♀️🤵🏻💍❤️ مدعوون لحفل الزفاف!</h1>
+    <div id="countdown"></div>
+    <p id="intro">انضموا إلينا للاحتفال بزفاف <strong>عبد الرحمن وآمال</strong></p>
 
-  <form id="rsvpForm">
-    <div class="language-toggle">
-      <button class="language-btn" type="button" onclick="switchLanguage('en')">EN</button>
-      <button class="language-btn" type="button" onclick="switchLanguage('ar')">AR</button>
+    <form id="rsvpForm" action="https://formspree.io/f/xnndeoea" method="POST">
+      <div class="language-toggle">
+        <button class="language-btn active" type="button" onclick="switchLanguage('ar')" id="arBtn">العربية</button>
+        <button class="language-btn" type="button" onclick="switchLanguage('en')" id="enBtn">English</button>
+      </div>
+
+      <div class="input-group">
+        <i class="fas fa-user"></i>
+        <input type="text" id="name" name="name" placeholder="الاسم" required />
+      </div>
+
+      <div class="input-group">
+        <i class="fas fa-envelope"></i>
+        <input type="email" id="email" name="email" placeholder="البريد الإلكتروني" required />
+      </div>
+
+      <div class="input-group">
+        <i class="fas fa-phone"></i>
+        <input type="tel" id="phone" name="phone" placeholder="رقم الهاتف" />
+      </div>
+
+      <div class="input-group">
+        <i class="fas fa-users"></i>
+        <select id="guests" name="guests" required>
+          <option value="">عدد الحضور</option>
+          <option value="1">شخص واحد</option>
+          <option value="2">شخصان</option>
+          <option value="3">3 أشخاص</option>
+          <option value="4">4 أشخاص</option>
+          <option value="5">5 أشخاص</option>
+          <option value="more">أكثر من 5</option>
+        </select>
+      </div>
+
+      <div class="input-group">
+        <i class="fas fa-comment"></i>
+        <input type="text" id="message" name="message" placeholder="رسالة خاصة (اختياري)" />
+      </div>
+      
+      <input type="hidden" name="_subject" value="تأكيد حضور جديد لزفاف عبدالرحمن وآمال!" />
+
+      <button type="submit" id="submitButton" class="sparkle">
+        <i class="fas fa-check"></i> تأكيد الحضور
+      </button>
+      
+      <div class="success-indicator" id="successIndicator">
+        <i class="fas fa-check-circle"></i> تم إرسال التأكيد بنجاح!
+      </div>
+    </form>
+
+    <div class="message" id="confirmationMessage">
+      <span id="thankYouMessage" style="display:block; font-weight:bold; font-size:1.2rem; color:#a83962;">
+        💌 حابين تشاركوا لحظتنا السعيدة؟ تأكيدك هو أول فرحة! ويسعدنا تكون جزء من قصتنا الجميلة… في انتظارك بكل حب 💖
+      </span>
+      <br /><br />
+      <div id="detailsAr">
+        📍 <strong>المكان:</strong> قاعـة قصـر الصيادلة - نقابة الصيادلة - طلخا<br />
+        🗓️ <strong>التاريخ:</strong> 24 يوليو 2025<br />
+        🕖 <strong>الساعة:</strong> 7:00 مساءً<br />
+        📌 <strong>اللوكيشن:</strong> <a href="https://g.co/kgs/47ND6P4" target="_blank" style="color: #c94f7c; text-decoration: none;">اضغط هنا للخريطة</a><br />
+        📞 <strong>للتواصل:</strong> <a href="tel:01069420990" style="color: #c94f7c; text-decoration: none;">01069420990</a>
+      </div>
+      <div id="detailsEn" style="display:none">
+        📍 <strong>Venue:</strong> Pharmacists Palace Hall – Pharmacists Syndicate - Talkha<br />
+        🗓️ <strong>Date:</strong> July 24, 2025<br />
+        🕖 <strong>Time:</strong> 7:00 PM<br />
+        📌 <strong>Location:</strong> <a href="https://g.co/kgs/47ND6P4" target="_blank" style="color: #c94f7c; text-decoration: none;">Click here for map</a><br />
+        📞 <strong>Contact:</strong> <a href="tel:01069420990" style="color: #c94f7c; text-decoration: none;">01069420990</a>
+      </div>
+      
+      <a class="add-calendar" target="_blank" id="calendarLink"
+        href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Abdelrahman%20%26%20Amaal%20Wedding&dates=20250724T160000Z%2F20250724T190000Z&details=Wedding%20Party%20in%20Talkha%20at%20Pharmacists%20Palace%20Hall&location=Pharmacists%20Palace%20Hall%20Talkha&sf=true&output=xml">
+        <i class="fas fa-calendar-plus"></i> إضافة للتقويم
+      </a>
+
+      <div class="social-share">
+        <p style="margin-bottom: 1rem; font-weight: 600;">شاركوا الفرحة معانا:</p>
+        <a href="#" class="share-btn whatsapp" onclick="shareOnWhatsApp()">
+          <i class="fab fa-whatsapp"></i>
+        </a>
+        <a href="#" class="share-btn facebook" onclick="shareOnFacebook()">
+          <i class="fab fa-facebook-f"></i>
+        </a>
+        <a href="#" class="share-btn telegram" onclick="shareOnTelegram()">
+          <i class="fab fa-telegram-plane"></i>
+        </a>
+      </div>
     </div>
-
-    <input type="text" id="name" placeholder="Your Name" required />
-    <input type="number" id="guests" placeholder="Number of Guests" min="1" required />
-
-    <button type="submit" id="submitButton">Confirm Attendance</button>
-  </form>
-
-  <div class="message" id="confirmationMessage">
-    <span id="thankYouMessage" style="display:block; font-weight:bold; font-size:1.1rem; color:#a83962;">
-      💌 حابين تشاركوا لحظتنا السعيدة؟ تأكيدك هو أول فرحة! ويسعدنا تكون جزء من قصتنا الجميلة… في انتظارك بكل حب 💖
-    </span>
-    <br /><br />
-    <div id="detailsAr">
-      📍 <strong>المكان:</strong> قاعـة قصـر الصيادلة - نقابة الصيادلة - طلخا<br />
-      🗓️ <strong>التاريخ:</strong> 24 يوليو 2025<br />
-      🕖 <strong>الساعة:</strong> 7:00 مساءً<br />
-      📌 <strong>اللوكيشن:</strong> <a href="https://g.co/kgs/47ND6P4" target="_blank">اضغط هنا</a><br />
-      📞 <strong>للتواصل:</strong> 01069420990
-    </div>
-    <div id="detailsEn" style="display:none">
-      📍 <strong>Venue:</strong> Pharmacists Hall – Talkha<br />
-      🗓️ <strong>Date:</strong> July 24, 2025<br />
-      🕖 <strong>Time:</strong> 7:00 PM<br />
-      📌 <strong>Location:</strong> <a href="https://g.co/kgs/47ND6P4" target="_blank">Click here</a><br />
-      📞 <strong>Contact:</strong> 01069420990
-    </div>
-    <a
-      class="add-calendar"
-      target="_blank"
-      href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Abdelrahman%20%26%20Amaal%20Wedding&dates=20250724T160000Z%2F20250724T190000Z&details=Wedding%20Party%20in%20Talkha%20at%20Pharmacists%20Hall&location=Pharmacists%20Hall%20Talkha&sf=true&output=xml"
-    >
-      📅 Add to Google Calendar
-    </a>
   </div>
 
   <script>
     const form = document.getElementById('rsvpForm');
     const message = document.getElementById('confirmationMessage');
-    const nameInput = document.getElementById('name');
+    const nameInput = document.getElementById('name'); // ما زال مفيدًا لسهولة الوصول إذا احتجت
+    let currentLanguage = 'ar';
 
-    form.addEventListener('submit', function (event) {
-      event.preventDefault();
-      const userName = nameInput.value.trim();
-      document.getElementById('thankYouMessage').innerText = `💌 شكراً يا ${userName} لتأكيد حضورك! في انتظارك بكل حب 💖`;
-      message.style.display = 'block';
-      form.style.display = 'none';
-    });
-
-    const countdown = document.getElementById('countdown');
-    const targetDate = new Date('2025-07-24T19:00:00').getTime();
-
-    const timer = setInterval(() => {
-      const now = new Date().getTime();
-      const distance = targetDate - now;
-      if (distance < 0) {
-        clearInterval(timer);
-        countdown.innerHTML = "🎊 It's wedding time! 🎊";
-        return;
-      }
-      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-      countdown.innerHTML = `⏳ ${days}d ${hours}h ${minutes}m ${seconds}s left until the wedding!`;
-    }, 1000);
-
-    function switchLanguage(lang) {
-      if (lang === 'ar') {
-        document.getElementById('title').innerText = '👰🏻‍♀️🤵🏻💍❤️ مدعوون لحفل الزفاف!';
-        document.getElementById('intro').innerHTML = 'انضموا إلينا للاحتفال بزفاف <strong>عبد الرحمن وآمال</strong>';
-        nameInput.placeholder = 'الاسم';
-        document.getElementById('guests').placeholder = 'عدد الحضور';
-        document.getElementById('submitButton').innerText = 'تأكيد الحضور';
-        document.getElementById('detailsAr').style.display = 'block';
-        document.getElementById('detailsEn').style.display = 'none';
-      } else {
-        document.getElementById('title').innerText = ".👰🏻‍♀️🤵🏻💍❤️ You're Invited!";
-        document.getElementById('intro').innerHTML = 'Join us to celebrate the wedding of <strong>Abdelrahman & Amaal</strong>';
-        nameInput.placeholder = 'Your Name';
-        document.getElementById('guests').placeholder = 'Number of Guests';
-        document.getElementById('submitButton').innerText = 'Confirm Attendance';
-        document.getElementById('detailsAr').style.display = 'none';
-        document.getElementById('detailsEn').style.display = 'block';
+    function createHearts() {
+      const heartsContainer = document.querySelector('.hearts');
+      if (!heartsContainer) return;
+      heartsContainer.innerHTML = ''; 
+      for (let i = 0; i < 25; i++) {
+        const heart = document.createElement('div');
+        heart.className = 'heart';
+        heart.innerHTML = '💖';
+        heart.style.left = Math.random() * 100 + '%';
+        heart.style.animationDelay = Math.random() * 6 + 's';
+        heart.style.fontSize = (Math.random() * 20 + 10) + 'px';
+        heart.style.opacity = Math.random() * 0.5 + 0.2;
+        heartsContainer.appendChild(heart);
       }
     }
+
+    form.addEventListener('submit', function (event) {
+      event.preventDefault(); 
+
+      const submitButton = document.getElementById('submitButton');
+      const originalButtonText = submitButton.innerHTML;
+      submitButton.innerHTML = currentLanguage === 'ar' ? 'جار الإرسال...' : 'Sending...';
+      submitButton.disabled = true;
+
+      const formData = new FormData(form);
+      const userName = formData.get('name'); 
+      const formAction = form.getAttribute('action');
+
+      fetch(formAction, {
+        method: 'POST',
+        body: formData,
+        headers: { 'Accept': 'application/json' }
+      }).then(response => {
+        if (response.ok) {
+          const thankYouMsg = currentLanguage === 'ar'
+            ? `💌 شكراً يا ${userName} لتأكيد حضورك! تم استلام بياناتك بنجاح. في انتظارك بكل حب 💖`
+            : `💌 Thank you ${userName} for confirming! Your details have been successfully received. We're waiting for you with love 💖`;
+          
+          document.getElementById('thankYouMessage').innerHTML = thankYouMsg;
+          document.getElementById('successIndicator').style.display = 'block'; 
+          
+          setTimeout(() => { 
+            message.style.display = 'block'; 
+            form.style.display = 'none';
+            createConfetti();
+          }, 500);
+
+        } else {
+          response.json().then(data => {
+            let errorMsg = currentLanguage === 'ar' ? "حدث خطأ أثناء إرسال النموذج. " : "An error occurred while submitting the form. ";
+            if (data && data.errors) {
+              errorMsg += data.errors.map(error => error.message).join(", ");
+            } else {
+              errorMsg += currentLanguage === 'ar' ? "يرجى المحاولة مرة أخرى." : "Please try again.";
+            }
+            alert(errorMsg); 
+          }).catch(() => {
+            alert(currentLanguage === 'ar' ? "حدث خطأ غير متوقع من الخادم. يرجى المحاولة مرة أخرى." : "An unexpected error occurred from the server. Please try again.");
+          });
+        }
+      }).catch(error => {
+        console.error('Error submitting form to Formspree:', error);
+        alert(currentLanguage === 'ar' ? "حدث خطأ. يرجى التحقق من اتصالك بالإنترنت والمحاولة مرة أخرى." : "An error occurred. Please check your internet connection and try again.");
+      }).finally(() => {
+        submitButton.innerHTML = originalButtonText;
+        submitButton.disabled = false;
+      });
+    });
+
+    function startCountdown() {
+      const countdown = document.getElementById('countdown');
+      if (!countdown) return;
+      const targetDate = new Date('2025-07-24T19:00:00').getTime();
+
+      const timer = setInterval(() => {
+        const now = new Date().getTime();
+        const distance = targetDate - now;
+        
+        if (distance < 0) {
+          clearInterval(timer);
+          countdown.innerHTML = currentLanguage === 'ar' 
+            ? "🎊 حان وقت الزفاف! 🎊" 
+            : "🎊 It's wedding time! 🎊";
+          return;
+        }
+        
+        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+        
+        countdown.innerHTML = currentLanguage === 'ar'
+          ? `⏳ ${days} يوم ${hours} ساعة ${minutes} دقيقة ${seconds} ثانية حتى الزفاف!`
+          : `⏳ ${days}d ${hours}h ${minutes}m ${seconds}s left until the wedding!`;
+      }, 1000);
+    }
+
+    function switchLanguage(lang) {
+      currentLanguage = lang;
+      const arBtn = document.getElementById('arBtn');
+      const enBtn = document.getElementById('enBtn');
+      
+      document.documentElement.setAttribute('lang', lang);
+      document.documentElement.setAttribute('dir', lang === 'ar' ? 'rtl' : 'ltr');
+        
+      const translations = {
+        ar: {
+          title: '👰🏻‍♀️🤵🏻💍❤️ مدعوون لحفل الزفاف!',
+          intro: 'انضموا إلينا للاحتفال بزفاف <strong>عبد الرحمن وآمال</strong>',
+          namePlaceholder: 'الاسم',
+          emailPlaceholder: 'البريد الإلكتروني',
+          phonePlaceholder: 'رقم الهاتف',
+          guestsDefaultOption: 'عدد الحضور',
+          guestOptions: ['شخص واحد', 'شخصان', '3 أشخاص', '4 أشخاص', '5 أشخاص', 'أكثر من 5'],
+          messagePlaceholder: 'رسالة خاصة (اختياري)',
+          submitButton: '<i class="fas fa-check"></i> تأكيد الحضور',
+          calendarLink: '<i class="fas fa-calendar-plus"></i> إضافة للتقويم',
+          countdownWeddingTime: "🎊 حان وقت الزفاف! 🎊",
+          countdownUnitDays: "يوم",
+          countdownUnitHours: "ساعة",
+          countdownUnitMinutes: "دقيقة",
+          countdownUnitSeconds: "ثانية",
+          countdownPrefix: "⏳ ",
+          countdownSuffix: " حتى الزفاف!"
+        },
+        en: {
+          title: '👰🏻‍♀️🤵🏻💍❤️ You\'re Invited!',
+          intro: 'Join us to celebrate the wedding of <strong>Abdelrahman & Amaal</strong>',
+          namePlaceholder: 'Your Name',
+          emailPlaceholder: 'Email Address',
+          phonePlaceholder: 'Phone Number',
+          guestsDefaultOption: 'Number of Guests',
+          guestOptions: ['1 Person', '2 People', '3 People', '4 People', '5 People', 'More than 5'],
+          messagePlaceholder: 'Special Message (Optional)',
+          submitButton: '<i class="fas fa-check"></i> Confirm Attendance',
+          calendarLink: '<i class="fas fa-calendar-plus"></i> Add to Calendar',
+          countdownWeddingTime: "🎊 It's wedding time! 🎊",
+          countdownUnitDays: "d",
+          countdownUnitHours: "h",
+          countdownUnitMinutes: "m",
+          countdownUnitSeconds: "s",
+          countdownPrefix: "⏳ ",
+          countdownSuffix: " left until the wedding!"
+        }
+      };
+
+      const currentTranslations = translations[lang];
+
+      document.getElementById('title').innerHTML = currentTranslations.title;
+      document.getElementById('intro').innerHTML = currentTranslations.intro;
+      document.getElementById('name').placeholder = currentTranslations.namePlaceholder;
+      document.getElementById('email').placeholder = currentTranslations.emailPlaceholder;
+      document.getElementById('phone').placeholder = currentTranslations.phonePlaceholder;
+      document.getElementById('message').placeholder = currentTranslations.messagePlaceholder;
+      document.getElementById('submitButton').innerHTML = currentTranslations.submitButton;
+      document.getElementById('calendarLink').innerHTML = currentTranslations.calendarLink;
+      
+      const guestsSelect = document.getElementById('guests');
+      guestsSelect.innerHTML = `<option value="">${currentTranslations.guestsDefaultOption}</option>`;
+      const guestValues = ["1", "2", "3", "4", "5", "more"];
+      currentTranslations.guestOptions.forEach((optionText, index) => {
+        guestsSelect.innerHTML += `<option value="${guestValues[index]}">${optionText}</option>`;
+      });
+      
+      document.getElementById(lang === 'ar' ? 'detailsAr' : 'detailsEn').style.display = 'block';
+      document.getElementById(lang === 'ar' ? 'detailsEn' : 'detailsAr').style.display = 'none';
+      
+      arBtn.classList.toggle('active', lang === 'ar');
+      enBtn.classList.toggle('active', lang === 'en');
+      
+      startCountdown(); // To update countdown text with new language
+    }
+
+    function createConfetti() {
+      const colors = ['#c94f7c', '#f57aa3', '#ff6b9d', '#ffc3dd', '#ffffff'];
+      const confettiCount = 100;
+      for (let i = 0; i < confettiCount; i++) {
+        const confettiPiece = document.createElement('div');
+        confettiPiece.className = 'confetti';
+        confettiPiece.style.left = Math.random() * 100 + 'vw';
+        confettiPiece.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+        confettiPiece.style.animationDuration = (Math.random() * 2 + 2) + 's';
+        confettiPiece.style.animationDelay = (Math.random() * 1) + 's';
+        if (Math.random() > 0.5) {
+            confettiPiece.style.width = '8px';
+            confettiPiece.style.height = '15px';
+            confettiPiece.style.borderRadius = '2px';
+        } else {
+            confettiPiece.style.width = '10px';
+            confettiPiece.style.height = '10px';
+            confettiPiece.style.borderRadius = '50%';
+        }
+        document.body.appendChild(confettiPiece);
+        setTimeout(() => {
+          confettiPiece.remove();
+        }, 4000);
+      }
+    }
+
+    function shareOnWhatsApp() {
+      const text = currentLanguage === 'ar' 
+        ? 'مدعوون لحضور زفاف عبد الرحمن وآمال - 24 يوليو 2025. لمزيد من التفاصيل: '
+        : 'You\'re invited to Abdelrahman & Amaal\'s wedding - July 24, 2025. For more details: ';
+      const url = window.location.href || "YOUR_PUBLISHED_WEBSITE_URL_HERE"; // Fallback if deployed
+      window.open(`https://wa.me/?text=${encodeURIComponent(text + url)}`, '_blank');
+    }
+
+    function shareOnFacebook() {
+      const url = window.location.href || "YOUR_PUBLISHED_WEBSITE_URL_HERE";
+      window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`, '_blank');
+    }
+
+    function shareOnTelegram() {
+      const text = currentLanguage === 'ar' 
+        ? 'مدعوون لحضور زفاف عبد الرحمن وآمال - 24 يوليو 2025'
+        : 'You\'re invited to Abdelrahman & Amaal\'s wedding - July 24, 2025';
+      const url = window.location.href || "YOUR_PUBLISHED_WEBSITE_URL_HERE";
+      window.open(`https://t.me/share/url?url=${encodeURIComponent(url)}&text=${encodeURIComponent(text)}`, '_blank');
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+      createHearts();
+      switchLanguage('ar'); // Sets default language and calls startCountdown
+    });
   </script>
 </body>
 </html>
