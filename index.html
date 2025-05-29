@@ -28,7 +28,6 @@
       overflow-x: hidden;
     }
 
-    /* زيادة تأثير الزهور مع الأوراق */
     #flowerContainer {
       position: fixed;
       width: 100%;
@@ -48,9 +47,9 @@
 
     @keyframes floatFlower {
       0% { transform: translate(0, 0) rotate(0deg) scale(1); }
-      25% { transform: translate(40px, -40px) rotate(90deg) scale(1.2); }
-      50% { transform: translate(0, -80px) rotate(180deg) scale(1); }
-      75% { transform: translate(-40px, -40px) rotate(270deg) scale(1.2); }
+      25% { transform: translate(50px, -50px) rotate(90deg) scale(1.3); }
+      50% { transform: translate(0, -100px) rotate(180deg) scale(1); }
+      75% { transform: translate(-50px, -50px) rotate(270deg) scale(1.3); }
       100% { transform: translate(0, 0) rotate(360deg) scale(1); }
     }
 
@@ -276,8 +275,7 @@
 
     .share-btn:hover {
       transform: translateY(-3px);
-      box-shadow: 0 5px 15px rgba(0, 0ier: 0;
-      background: #25D366;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
     }
 
     .whatsapp { background: #25D366; }
@@ -289,7 +287,6 @@
       form { padding: 1.5rem; }
     }
 
-    /* تأثير القلوب */
     .confetti {
       position: fixed;
       top: -10px;
@@ -335,6 +332,9 @@
     <div class="flower" style="left: 65%; top: 65%; animation-delay: 1s;">🌸</div>
     <div class="flower" style="left: 75%; top: 75%; animation-delay: 3s;">🌸</div>
     <div class="flower" style="left: 85%; top: 85%; animation-delay: 5s;">🌸</div>
+    <div class="flower" style="left: 20%; top: 40%; animation-delay: 7s;">🌸</div>
+    <div class="flower" style="left: 70%; top: 30%; animation-delay: 9s;">🌸</div>
+    <div class="flower" style="left: 90%; top: 60%; animation-delay: 11s;">🌸</div>
   </div>
 
   <div class="main-content">
@@ -348,8 +348,8 @@
 
     <form id="rsvpForm" action="https://formspree.io/f/xnndeoea" method="POST">
       <div class="language-toggle">
-        <button class="language-btn active" type="button" onclick="switchLanguage('ar')" id="arBtn">العربية</button>
-        <button class="language-btn" type="button" onclick="switchLanguage('en')" id="enBtn">English</button>
+        <button class="language-btn active" type="button" onclick="switchLanguage('ar')">العربية</button>
+        <button class="language-btn" type="button" onclick="switchLanguage('en')">English</button>
       </div>
 
       <div class="input-group">
@@ -400,21 +400,13 @@
       <p id="thankYouMessage" style="font-weight: bold; font-size: 1.2rem; color: #2f4f4f;">
         💌 حابين تشاركوا لحظتنا السعيدة؟ تأكيدك هو أول فرحة! ويسعدنا تكون جزء من قصتنا الجميلة… في انتظارك بكل حب 💖
       </p>
-      <div id="detailsAr">
+      <p>
         📍 <strong>المكان:</strong> قاعـة قصـر الصيادلة - نقابة الصيادلة - طلخا<br />
         🗓️ <strong>التاريخ:</strong> 24 يوليو 2025<br />
         🕖 <strong>الساعة:</strong> 7:00 مساءً<br />
         📌 <strong>اللوكيشن:</strong> <a href="https://g.co/kgs/47ND6P4" target="_blank" style="color: #2f4f4f;">اضغط هنا للخريطة</a><br />
         📞 <strong>للتواصل:</strong> <a href="tel:01069420990" style="color: #2f4f4f;">01069420990</a>
-      </div>
-      <div id="detailsEn" style="display:none">
-        📍 <strong>Venue:</strong> Pharmacists Palace Hall – Pharmacists Syndicate - Talkha<br />
-        🗓️ <strong>Date:</strong> July 24, 2025<br />
-        🕖 <strong>Time:</strong> 7:00 PM<br />
-        📌 <strong>Location:</strong> <a href="https://g.co/kgs/47ND6P4" target="_blank" style="color: #2f4f4f;">Click here for map</a><br />
-        📞 <strong>Contact:</strong> <a href="tel:01069420990" style="color: #2f4f4f;">01069420990</a>
-      </div>
-
+      </p>
       <a class="add-calendar" target="_blank" id="calendarLink"
         href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Abdelrahman%20%26%20Amaal%20Wedding&dates=20250724T160000Z%2F20250724T190000Z&details=Wedding%20Party%20in%20Talkha%20at%20Pharmacists%20Palace%20Hall&location=Pharmacists%20Palace%20Hall%20Talkha&sf=true&output=xml">
         <i class="fas fa-calendar-plus"></i> إضافة للتقويم
@@ -469,15 +461,12 @@
 
     function switchLanguage(lang) {
       currentLanguage = lang;
-      const arBtn = document.getElementById('arBtn');
-      const enBtn = document.getElementById('enBtn');
-
-      document.documentElement.setAttribute('lang', lang);
-      document.documentElement.setAttribute('dir', lang === 'ar' ? 'rtl' : 'ltr');
+      const arBtn = document.querySelector('#arBtn');
+      const enBtn = document.querySelector('#enBtn');
 
       const translations = {
         ar: {
-          title: '👰🏻‍♀️🤵🏻💍❤️ مدعوون لحفل الزفاف!',
+          title: '👰🏻‍♀️🤵🏻💍❤️ مدعوون لحفل زفافنا!',
           intro: 'انضموا إلينا للاحتفال بزفاف <strong>عبدالرحمن وآمال</strong>',
           namePlaceholder: 'الاسم',
           phonePlaceholder: 'رقم الهاتف',
@@ -488,9 +477,11 @@
           messagePlaceholder: 'رسالة خاصة (اختياري)',
           submitButton: '<i class="fas fa-check"></i> تأكيد الحضور',
           calendarLink: '<i class="fas fa-calendar-plus"></i> إضافة للتقويم',
+          thankYouMessage: '💌 حابين تشاركوا لحظتنا السعيدة؟ تأكيدك هو أول فرحة! ويسعدنا تكون جزء من قصتنا الجميلة… في انتظارك بكل حب 💖',
+          details: '📍 <strong>المكان:</strong> قاعـة قصـر الصيادلة - نقابة الصيادلة - طلخا<br />🗓️ <strong>التاريخ:</strong> 24 يوليو 2025<br />🕖 <strong>الساعة:</strong> 7:00 مساءً<br />📌 <strong>اللوكيشن:</strong> <a href="https://g.co/kgs/47ND6P4" target="_blank" style="color: #2f4f4f;">اضغط هنا للخريطة</a><br />📞 <strong>للتواصل:</strong> <a href="tel:01069420990" style="color: #2f4f4f;">01069420990</a>'
         },
         en: {
-          title: '👰🏻‍♀️🤵🏻💍❤️ You\'re Invited!',
+          title: '👰🏻‍♀️🤵🏻💍❤️ You\'re Invited to Our Wedding!',
           intro: 'Join us to celebrate the wedding of <strong>Abdelrahman & Amaal</strong>',
           namePlaceholder: 'Your Name',
           phonePlaceholder: 'Phone Number',
@@ -501,35 +492,34 @@
           messagePlaceholder: 'Special Message (Optional)',
           submitButton: '<i class="fas fa-check"></i> Confirm Attendance',
           calendarLink: '<i class="fas fa-calendar-plus"></i> Add to Calendar',
+          thankYouMessage: '💌 We’d love for you to share our special moment! Your confirmation is the first joy! We can’t wait to have you as part of our beautiful story… With all our love 💖',
+          details: '📍 <strong>Venue:</strong> Pharmacists Palace Hall – Pharmacists Syndicate - Talkha<br />🗓️ <strong>Date:</strong> July 24, 2025<br />🕖 <strong>Time:</strong> 7:00 PM<br />📌 <strong>Location:</strong> <a href="https://g.co/kgs/47ND6P4" target="_blank" style="color: #2f4f4f;">Click here for map</a><br />📞 <strong>Contact:</strong> <a href="tel:01069420990" style="color: #2f4f4f;">01069420990</a>'
         }
       };
 
-      const currentTranslations = translations[lang];
+      const t = translations[lang];
 
-      document.getElementById('title').innerHTML = currentTranslations.title;
-      document.getElementById('intro').innerHTML = currentTranslations.intro;
-      document.getElementById('name').placeholder = currentTranslations.namePlaceholder;
-      document.getElementById('phone').placeholder = currentTranslations.phonePlaceholder;
-      document.getElementById('message').placeholder = currentTranslations.messagePlaceholder;
-      document.getElementById('submitButton').innerHTML = currentTranslations.submitButton;
-      document.getElementById('calendarLink').innerHTML = currentTranslations.calendarLink;
+      document.getElementById('title').innerHTML = t.title;
+      document.getElementById('intro').innerHTML = t.intro;
+      document.getElementById('name').placeholder = t.namePlaceholder;
+      document.getElementById('phone').placeholder = t.phonePlaceholder;
+      document.getElementById('message').placeholder = t.messagePlaceholder;
+      document.getElementById('submitButton').innerHTML = t.submitButton;
+      document.getElementById('calendarLink').innerHTML = t.calendarLink;
+      document.getElementById('thankYouMessage').innerHTML = t.thankYouMessage;
+      document.getElementById('confirmationMessage').querySelector('p:nth-child(2)').innerHTML = t.details;
 
       const guestsSelect = document.getElementById('guests');
-      guestsSelect.innerHTML = `<option value="">${currentTranslations.guestsDefaultOption}</option>`;
-      const guestValues = ["1", "2", "3", "4", "5", "more"];
-      currentTranslations.guestOptions.forEach((optionText, index) => {
-        guestsSelect.innerHTML += `<option value="${guestValues[index]}">${optionText}</option>`;
+      guestsSelect.innerHTML = `<option value="">${t.guestsDefaultOption}</option>`;
+      ['1', '2', '3', '4', '5', 'more'].forEach((val, idx) => {
+        guestsSelect.innerHTML += `<option value="${val}">${t.guestOptions[idx]}</option>`;
       });
 
       const attendingSelect = document.getElementById('attending');
-      attendingSelect.innerHTML = `<option value="" disabled selected>${currentTranslations.attendingDefaultOption}</option>`;
-      const attendingValues = ["yes", "no"];
-      currentTranslations.attendingOptions.forEach((optionText, index) => {
-        attendingSelect.innerHTML += `<option value="${attendingValues[index]}">${optionText}</option>`;
+      attendingSelect.innerHTML = `<option value="" disabled selected>${t.attendingDefaultOption}</option>`;
+      ['yes', 'no'].forEach((val, idx) => {
+        attendingSelect.innerHTML += `<option value="${val}">${t.attendingOptions[idx]}</option>`;
       });
-
-      document.getElementById(lang === 'ar' ? 'detailsAr' : 'detailsEn').style.display = 'block';
-      document.getElementById(lang === 'ar' ? 'detailsEn' : 'detailsAr').style.display = 'none';
 
       arBtn.classList.toggle('active', lang === 'ar');
       enBtn.classList.toggle('active', lang === 'en');
@@ -556,7 +546,7 @@
     }
 
     function shareOnWhatsApp() {
-      const text = currentLanguage === 'ar' 
+      const text = currentLanguage === 'ar'
         ? 'مدعوون لحضور زفاف عبدالرحمن وآمال - 24 يوليو 2025. لمزيد من التفاصيل: '
         : 'You\'re invited to Abdelrahman & Amaal\'s wedding - July 24, 2025. For more details: ';
       window.open(`https://wa.me/?text=${encodeURIComponent(text + window.location.href)}`, '_blank');
@@ -567,7 +557,7 @@
     }
 
     function shareOnTelegram() {
-      const text = currentLanguage === 'ar' 
+      const text = currentLanguage === 'ar'
         ? 'مدعوون لحضور زفاف عبدالرحمن وآمال - 24 يوليو 2025'
         : 'You\'re invited to Abdelrahman & Amaal\'s wedding - July 24, 2025';
       window.open(`https://t.me/share/url?url=${encodeURIComponent(window.location.href)}&text=${encodeURIComponent(text)}`, '_blank');
@@ -587,7 +577,7 @@
         leaf.innerHTML = '🍃';
         leafContainer.appendChild(leaf);
       }
-      for (let i = 0; i < 10; i++) {
+      for (let i = 0; i < 12; i++) { // زيادة عدد الزهور
         const flower = document.createElement('div');
         flower.className = 'flower';
         flower.style.left = Math.random() * 100 + '%';
