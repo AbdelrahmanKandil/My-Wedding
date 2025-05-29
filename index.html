@@ -4,564 +4,164 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Abdelrahman & Amaal Wedding</title>
-  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&display=swap" rel="stylesheet" />
-  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet" />
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&family=Amiri:wght@400;700&display=swap" rel="stylesheet" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" rel="stylesheet" />
+  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet" />
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
+    * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
-      font-family: 'Cairo', sans-serif;
-      background: #f9f7f4;
-      color: #333;
-      min-height: 100vh;
-      position: relative;
-      overflow-x: hidden;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      padding: 2rem 1rem;
+      font-family: 'Cairo', 'Amiri', sans-serif;
+      background: linear-gradient(135deg, #fff9f5 0%, #ffe8e8 50%, #ffd6e8 100%);
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      padding: 2rem 1rem; color: #333; min-height: 100vh; position: relative; overflow-x: hidden;
     }
-
-    body::before {
-      content: '';
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(135deg, rgba(255,255,255,0.9) 0%, rgba(249,247,244,0.9) 100%);
-      z-index: -2;
-    }
-
-    .top-foliage {
-      position: fixed;
-      top: 0;
-      right: 0;
-      width: 300px;
-      height: 300px;
-      background: url('/home/ubuntu/wedding_assets/colorful_leaves.webp') no-repeat;
-      background-size: contain;
-      background-position: top right;
-      opacity: 0.7;
-      transform: rotate(180deg);
-      z-index: -1;
-      pointer-events: none;
-    }
-
-    .bottom-foliage {
-      position: fixed;
-      bottom: 0;
-      left: 0;
-      width: 300px;
-      height: 300px;
-      background: url('/home/ubuntu/wedding_assets/colorful_leaves.webp') no-repeat;
-      background-size: contain;
-      background-position: bottom left;
-      opacity: 0.7;
-      z-index: -1;
-      pointer-events: none;
-    }
-
-    .hearts {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      pointer-events: none;
-      z-index: -1;
-    }
-
-    .heart {
-      position: absolute;
-      color: rgba(201, 79, 124, 0.1);
-      animation: float 6s ease-in-out infinite;
-    }
-
-    @keyframes float {
-      0%, 100% { transform: translateY(0px) rotate(0deg); }
-      50% { transform: translateY(-20px) rotate(180deg); }
-    }
-
-    .main-content {
-      display: block;
-      width: 100%;
-      max-width: 600px;
-      animation: slideInUp 0.8s ease-out;
-      position: relative;
-      z-index: 1;
-    }
-
-    @keyframes slideInUp {
-      from {
-        opacity: 0;
-        transform: translateY(30px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    h1 {
-      font-family: 'Great Vibes', cursive;
-      color: #5a5a5a;
-      margin: 1.5rem 0;
-      font-size: 3rem;
-      text-align: center;
-      font-weight: 400;
-      text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
-    }
-
-    .date-display {
-      font-family: 'Cairo', sans-serif;
-      color: #5a5a5a;
-      font-size: 1.5rem;
-      text-align: center;
-      margin-bottom: 1rem;
-      font-weight: 300;
-    }
-
-    .wedding-announcement {
-      font-family: 'Cairo', sans-serif;
-      color: #5a5a5a;
-      font-size: 1.8rem;
-      text-align: center;
-      margin: 1.5rem 0;
-      font-weight: 600;
-    }
-
-    p {
-      text-align: center;
-      margin-bottom: 0.5rem;
-      line-height: 1.6;
-    }
-
-    .wedding-banner {
-      max-width: 100%;
-      width: 100%;
-      border-radius: 20px;
-      box-shadow: 0 15px 35px rgba(0,0,0,0.1);
-      display: block;
-      margin: 0 auto 2rem;
-      transition: transform 0.3s ease;
-    }
-
-    .wedding-banner:hover {
-      transform: scale(1.02);
-    }
-
-    form {
-      background: rgba(255, 255, 255, 0.95);
-      padding: 2.5rem 2rem;
-      border-radius: 20px;
-      box-shadow: 0 20px 40px rgba(0,0,0,0.08);
-      backdrop-filter: blur(10px);
-      border: 1px solid rgba(255,255,255,0.2);
-      max-width: 500px;
-      width: 100%;
-      margin: 2rem auto;
-    }
-
-    .language-toggle {
-      display: flex;
-      gap: 0.5rem;
-      justify-content: center;
-      margin-bottom: 2rem;
-    }
-
-    .language-btn {
-      background: linear-gradient(45deg, #f57aa3, #c94f7c);
-      color: white;
-      border: none;
-      font-weight: 600;
-      padding: 0.8rem 1.5rem;
-      border-radius: 25px;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      box-shadow: 0 4px 15px rgba(201, 79, 124, 0.3);
-    }
-
-    .language-btn:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 8px 25px rgba(201, 79, 124, 0.4);
-    }
-
-    .language-btn.active {
-      background: linear-gradient(45deg, #c94f7c, #a83962);
-    }
-
-    .input-group {
-      position: relative;
-      margin-bottom: 1.5rem;
-    }
-
-    .input-group i {
-      position: absolute;
-      left: 15px;
-      top: 50%;
-      transform: translateY(-50%);
-      color: #c94f7c;
-      z-index: 1;
-    }
-
-    input, select {
-      width: 100%;
-      padding: 1rem 1rem 1rem 45px;
-      border-radius: 15px;
-      border: 2px solid #e1e1e1;
-      font-size: 1rem;
-      font-family: 'Cairo', sans-serif;
-      transition: all 0.3s ease;
-      background: rgba(255,255,255,0.9);
-    }
-
-    input:focus, select:focus {
-      outline: none;
-      border-color: #c94f7c;
-      box-shadow: 0 0 20px rgba(201, 79, 124, 0.2);
-      transform: translateY(-2px);
-    }
-
-    button[type="submit"] {
-      width: 100%;
-      padding: 1.2rem;
-      margin-top: 1rem;
-      border-radius: 15px;
-      border: none;
-      font-size: 1.1rem;
-      font-weight: 600;
-      background: linear-gradient(45deg, #c94f7c, #f57aa3);
-      color: white;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      box-shadow: 0 8px 25px rgba(201, 79, 124, 0.3);
-      font-family: 'Cairo', sans-serif;
-    }
-
-    button[type="submit"]:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 15px 35px rgba(201, 79, 124, 0.4);
-    }
-    
-    button[type="submit"]:disabled {
-      background: linear-gradient(45deg, #aaa, #ccc);
-      cursor: not-allowed;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-      transform: translateY(0);
-    }
-
-    .message {
-      margin-top: 2rem;
-      background: linear-gradient(135deg, #fff6fb, #ffe8f3);
-      padding: 2rem;
-      border-radius: 20px;
-      border: 1px solid rgba(201, 79, 124, 0.2);
-      box-shadow: 0 15px 35px rgba(201, 79, 124, 0.1);
-      display: none;
-      text-align: center;
-      max-width: 500px;
-      width: 100%;
-      margin-left: auto;
-      margin-right: auto;
-      animation: fadeInScale 0.8s ease forwards;
-    }
-
-    @keyframes fadeInScale {
-      0% {
-        opacity: 0;
-        transform: scale(0.8);
-      }
-      100% {
-        opacity: 1;
-        transform: scale(1);
-      }
-    }
-
-    #countdown {
-      margin: 2rem 0;
-      font-size: 1.3rem;
-      color: #5a5a5a;
-      font-weight: 700;
-      text-align: center;
-      background: rgba(255,255,255,0.8);
-      padding: 1rem;
-      border-radius: 15px;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-    }
-
-    .add-calendar {
-      display: inline-block;
-      margin-top: 1.5rem;
-      background: linear-gradient(45deg, #a83962, #c94f7c);
-      color: white;
-      text-decoration: none;
-      font-weight: 600;
-      padding: 1rem 2rem;
-      border-radius: 25px;
-      transition: all 0.3s ease;
-      box-shadow: 0 8px 25px rgba(168, 57, 98, 0.3);
-    }
-
-    .add-calendar:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 15px 35px rgba(168, 57, 98, 0.4);
-    }
-
-    .social-share {
-      margin-top: 2rem;
-      text-align: center;
-    }
-
-    .share-btn {
-      display: inline-block;
-      margin: 0 10px;
-      padding: 12px;
-      border-radius: 50%;
-      color: white;
-      text-decoration: none;
-      transition: all 0.3s ease;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-    }
-
-    .share-btn:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 8px 25px rgba(0,0,0,0.3);
-    }
-
+    .hearts { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; pointer-events: none; }
+    .heart { position: absolute; color: rgba(201, 79, 124, 0.1); animation: float 6s ease-in-out infinite; }
+    @keyframes float { 0%, 100% { transform: translateY(0px) rotate(0deg); } 50% { transform: translateY(-20px) rotate(180deg); } }
+    .main-content { width: 100%; max-width: 600px; animation: slideInUp 0.8s ease-out; }
+    @keyframes slideInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+    h1 { color: #c94f7c; margin-top: 1rem; font-size: 2.2rem; text-align: center; font-weight: 700; text-shadow: 2px 2px 4px rgba(0,0,0,0.1); animation: pulse 2s ease-in-out infinite alternate; }
+    @keyframes pulse { from { transform: scale(1); } to { transform: scale(1.05); } }
+    .wedding-banner { max-width: 100%; border-radius: 20px; box-shadow: 0 15px 35px rgba(0,0,0,0.1); transition: transform 0.3s ease; }
+    .wedding-banner:hover { transform: scale(1.02); }
+    form { background: rgba(255, 255, 255, 0.95); padding: 2.5rem 2rem; border-radius: 20px; box-shadow: 0 20px 40px rgba(0,0,0,0.15); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.2); max-width: 500px; width: 100%; margin: 2rem auto; }
+    .language-toggle { display: flex; gap: 0.5rem; justify-content: center; margin-bottom: 2rem; }
+    .language-btn { background: linear-gradient(45deg, #f57aa3, #c94f7c); color: white; border: none; font-weight: 600; padding: 0.8rem 1.5rem; border-radius: 25px; cursor: pointer; transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(201, 79, 124, 0.3); }
+    .language-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(201, 79, 124, 0.4); }
+    .language-btn.active { background: linear-gradient(45deg, #c94f7c, #a83962); }
+    .input-group { position: relative; margin-bottom: 1.5rem; }
+    .input-group i { position: absolute; left: 15px; top: 50%; transform: translateY(-50%); color: #c94f7c; z-index: 1; }
+    input, select { width: 100%; padding: 1rem 1rem 1rem 45px; border-radius: 15px; border: 2px solid #e1e1e1; font-size: 1rem; font-family: 'Cairo', sans-serif; transition: all 0.3s ease; background: rgba(255,255,255,0.9); }
+    input:focus, select:focus { outline: none; border-color: #c94f7c; box-shadow: 0 0 20px rgba(201, 79, 124, 0.2); transform: translateY(-2px); }
+    button[type="submit"] { width: 100%; padding: 1.2rem; margin-top: 1rem; border-radius: 15px; border: none; font-size: 1.1rem; font-weight: 600; background: linear-gradient(45deg, #c94f7c, #f57aa3); color: white; cursor: pointer; transition: all 0.3s ease; box-shadow: 0 8px 25px rgba(201, 79, 124, 0.3); font-family: 'Cairo', sans-serif; }
+    button[type="submit"]:hover { transform: translateY(-3px); box-shadow: 0 15px 35px rgba(201, 79, 124, 0.4); }
+    button[type="submit"]:disabled { background: linear-gradient(45deg, #aaa, #ccc); cursor: not-allowed; box-shadow: 0 4px 15px rgba(0,0,0,0.2); transform: translateY(0); }
+    .message { margin-top: 2rem; background: linear-gradient(135deg, #fff6fb, #ffe8f3); padding: 2rem; border-radius: 20px; border: 2px solid #c94f7c; box-shadow: 0 15px 35px rgba(201, 79, 124, 0.2); display: none; text-align: center; max-width: 500px; width: 100%; animation: fadeInScale 0.8s ease forwards; }
+    @keyframes fadeInScale { 0% { opacity: 0; transform: scale(0.8); } 100% { opacity: 1; transform: scale(1); } }
+    .add-calendar { display: inline-block; margin-top: 1.5rem; background: linear-gradient(45deg, #a83962, #c94f7c); color: white; text-decoration: none; font-weight: 600; padding: 1rem 2rem; border-radius: 25px; transition: all 0.3s ease; box-shadow: 0 8px 25px rgba(168, 57, 98, 0.3); }
+    .add-calendar:hover { transform: translateY(-3px); box-shadow: 0 15px 35px rgba(168, 57, 98, 0.4); }
+    .social-share { margin-top: 2rem; text-align: center; }
+    .share-btn { display: inline-block; margin: 0 10px; padding: 12px; border-radius: 50%; color: white; text-decoration: none; transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(0,0,0,0.2); }
+    .share-btn:hover { transform: translateY(-3px); box-shadow: 0 8px 25px rgba(0,0,0,0.3); }
     .whatsapp { background: #25D366; }
     .facebook { background: #1877F2; }
     .telegram { background: #0088cc; }
-
     @media (max-width: 768px) {
-      body {
-        padding: 1rem 0.5rem;
-      }
-      h1 {
-        font-size: 2.5rem;
-      }
-      .date-display {
-        font-size: 1.2rem;
-      }
-      .wedding-announcement {
-        font-size: 1.5rem;
-      }
-      form {
-        padding: 2rem 1.5rem;
-      }
-      .top-foliage, .bottom-foliage {
-        width: 200px;
-        height: 200px;
-      }
+      body { padding: 1rem 0.5rem; }
+      h1 { font-size: 1.8rem; }
+      form { padding: 2rem 1.5rem; }
     }
-
-    .sparkle {
-      position: relative;
-      overflow: hidden;
-    }
-
-    .sparkle::before {
-      content: '';
-      position: absolute;
-      top: -50%;
-      left: -50%;
-      width: 200%;
-      height: 200%;
-      background: linear-gradient(45deg, transparent, rgba(255,255,255,0.1), transparent);
-      transform: rotate(45deg);
-      animation: sparkle 3s linear infinite;
-    }
-
-    @keyframes sparkle {
-      0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
-      100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
-    }
-
-    .success-indicator {
-      color: #27ae60;
-      font-size: 1.1rem;
-      margin-top: 1rem;
-      text-align: center;
-      display: none;
-    }
-
-    .confetti {
-      position: fixed;
-      top: -10px;
-      width: 10px;
-      height: 30px;
-      opacity: 0.8;
-      z-index: 1000;
-      pointer-events: none;
-      animation: confetti-fall 3s linear forwards;
-    }
-    
-    @keyframes confetti-fall {
-      0% {
-        transform: translateY(0vh) rotate(0deg);
-        opacity: 1;
-      }
-      100% {
-        transform: translateY(100vh) rotate(720deg);
-        opacity: 0;
-      }
-    }
-
-    .falling-heart {
-      position: fixed;
-      color: #c94f7c;
-      font-size: 20px;
-      z-index: 1000;
-      pointer-events: none;
-      animation: heart-fall 4s linear forwards;
-      opacity: 0;
-    }
-    
-    @keyframes heart-fall {
-      0% {
-        transform: translateY(-50px) rotate(0deg);
-        opacity: 0;
-      }
-      10% {
-        opacity: 0.8;
-      }
-      90% {
-        opacity: 0.8;
-      }
-      100% {
-        transform: translateY(100vh) rotate(360deg);
-        opacity: 0;
-      }
-    }
+    .sparkle { position: relative; overflow: hidden; }
+    .sparkle::before { content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%; background: linear-gradient(45deg, transparent, rgba(255,255,255,0.1), transparent); transform: rotate(45deg); animation: sparkle 3s linear infinite; }
+    @keyframes sparkle { 0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); } 100% { transform: translateX(100%) translateY(100%) rotate(45deg); } }
+    .success-indicator { color: #27ae60; font-size: 1.1rem; margin-top: 1rem; text-align: center; display: none; }
+    .confetti { position: fixed; top: -10px; width: 10px; height: 30px; opacity: 0.8; z-index: 1000; pointer-events: none; animation: confetti-fall 3s linear forwards; }
+    @keyframes confetti-fall { 0% { transform: translateY(0vh) rotate(0deg); opacity: 1; } 100% { transform: translateY(100vh) rotate(720deg); opacity: 0; } }
   </style>
 </head>
 <body>
-  <div class="top-foliage"></div>
-  <div class="bottom-foliage"></div>
   <div class="hearts"></div>
-
-  <div class="main-content" id="mainContent">
-    <p align="center">
-      <img src="./Wedding.jpg" alt="Wedding Photo" style="width: 600px; max-width: 100%; height: auto; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.1);" />
-    </p>
-    
-    <div class="date-display" id="dateDisplay">24 يوليو 2025</div>
-    <h1 id="title">عبدالرحمن وآمال</h1>
-    <div class="wedding-announcement" id="weddingAnnouncement">مدعوون لحفل الزفاف!</div>
-    
-    <div id="countdown"></div>
-    <p id="intro">انضموا إلينا للاحتفال بزفاف <strong>عبدالرحمن وآمال</strong></p>
-
-    <form id="rsvpForm" action="https://formspree.io/f/xnndeoea" method="POST">
-      <div class="language-toggle">
-        <button class="language-btn active" type="button" onclick="switchLanguage('ar')" id="arBtn">العربية</button>
-        <button class="language-btn" type="button" onclick="switchLanguage('en')" id="enBtn">English</button>
+  <div class="container main-content" data-aos="fade-up">
+    <img src="./Wedding.jpg" alt="Wedding Photo" class="wedding-banner img-fluid rounded-3 shadow" data-aos="zoom-in" data-aos-delay="200" />
+    <h1 id="title" data-aos="fade-up" data-aos-delay="400">👰🏻‍♀️🤵🏻💍❤️ مدعوون لحفل الزفاف!</h1>
+    <div id="countdown" class="text-center p-3 bg-white rounded-3 shadow" data-aos="fade-up" data-aos-delay="600"></div>
+    <p id="intro" data-aos="fade-up" data-aos-delay="800">انضموا إلينا للاحتفال بزفاف <strong>عبدالرحمن وآمال </strong></p>
+    <form id="rsvpForm" class="p-4 bg-white rounded-3 shadow-lg" action="https://formspree.io/f/xnndeoea" method="POST" data-aos="fade-up" data-aos-delay="1000">
+      <div class="language-toggle mb-3">
+        <button class="language-btn btn btn-primary active" type="button" onclick="switchLanguage('ar')" id="arBtn">العربية</button>
+        <button class="language-btn btn btn-primary" type="button" onclick="switchLanguage('en')" id="enBtn">English</button>
       </div>
-
-      <div class="input-group">
-        <i class="fas fa-user"></i>
-        <input type="text" id="name" name="name" placeholder="الاسم" required />
+      <div class="mb-3">
+        <div class="input-group">
+          <span class="input-group-text"><i class="fas fa-user"></i></span>
+          <input type="text" id="name" name="name" class="form-control" placeholder="الاسم" required />
+        </div>
       </div>
-
-      <div class="input-group">
-        <i class="fas fa-phone"></i>
-        <input type="tel" id="phone" name="phone" placeholder="رقم الهاتف" />
+      <div class="mb-3">
+        <div class="input-group">
+          <span class="input-group-text"><i class="fas fa-phone"></i></span>
+          <input type="tel" id="phone" name="phone" class="form-control" placeholder="رقم الهاتف" />
+        </div>
       </div>
-
-      <div class="input-group">
-        <i class="fas fa-users"></i>
-        <select id="guests" name="guests" required>
-          <option value="">عدد الحضور</option>
-          <option value="1">شخص واحد</option>
-          <option value="2">شخصان</option>
-          <option value="3">3 أشخاص</option>
-          <option value="4">4 أشخاص</option>
-          <option value="5">5 أشخاص</option>
-          <option value="more">أكثر من 5</option>
-        </select>
+      <div class="mb-3">
+        <div class="input-group">
+          <span class="input-group-text"><i class="fas fa-users"></i></span>
+          <select id="guests" name="guests" class="form-select" required>
+            <option value="">عدد الحضور</option>
+            <option value="1">شخص واحد</option>
+            <option value="2">شخصان</option>
+            <option value="3">3 أشخاص</option>
+            <option value="4">4 أشخاص</option>
+            <option value="5">5 أشخاص</option>
+            <option value="more">أكثر من 5</option>
+          </select>
+        </div>
       </div>
-      
-      <div class="input-group">
-        <i class="fas fa-check-circle"></i>
-        <select name="attending" id="attending" required>
-          <option value="" disabled selected>هل ستتمكن من الحضور؟</option>
-          <option value="yes">نعم، سأحضر</option>
-          <option value="no">للأسف، لن أتمكن من الحضور</option>
-        </select>
+      <div class="mb-3">
+        <div class="input-group">
+          <span class="input-group-text"><i class="fas fa-check-circle"></i></span>
+          <select name="attending" id="attending" class="form-select" required>
+            <option value="" disabled selected>هل ستتمكن من الحضور؟</option>
+            <option value="yes">نعم، سأحضر</option>
+            <option value="no">للأسف، لن أتمكن من الحضور</option>
+          </select>
+        </div>
       </div>
-
-      <div class="input-group">
-        <i class="fas fa-comment"></i>
-        <input type="text" id="message" name="message" placeholder="رسالة خاصة (اختياري)" />
+      <div class="mb-3">
+        <div class="input-group">
+          <span class="input-group-text"><i class="fas fa-comment"></i></span>
+          <input type="text" id="message" name="message" class="form-control" placeholder="رسالة خاصة (اختياري)" />
+        </div>
       </div>
-      
       <input type="hidden" name="_subject" value="تأكيد حضور جديد لزفاف عبدالرحمن وآمال!" />
-
-      <button type="submit" id="submitButton" class="sparkle">
+      <button type="submit" id="submitButton" class="btn btn-primary sparkle w-100">
         <i class="fas fa-check"></i> تأكيد الحضور
       </button>
-      
-      <div class="success-indicator" id="successIndicator">
+      <div class="success-indicator mt-3" id="successIndicator">
         <i class="fas fa-check-circle"></i> تم إرسال التأكيد بنجاح!
       </div>
     </form>
-
-    <div class="message" id="confirmationMessage">
-      <span id="thankYouMessage" style="display:block; font-weight:bold; font-size:1.2rem; color:#a83962;">
+    <div class="message" id="confirmationMessage" data-aos="fade-up">
+      <span id="thankYouMessage" class="d-block fw-bold fs-5 text-center" style="color: #a83962;">
         💌 حابين تشاركوا لحظتنا السعيدة؟ تأكيدك هو أول فرحة! ويسعدنا تكون جزء من قصتنا الجميلة… في انتظارك بكل حب 💖
       </span>
       <br /><br />
-      <div id="detailsAr">
+      <div id="detailsAr" class="text-center">
         📍 <strong>المكان:</strong> قاعـة قصـر الصيادلة - نقابة الصيادلة - طلخا<br />
         🗓️ <strong>التاريخ:</strong> 24 يوليو 2025<br />
         🕖 <strong>الساعة:</strong> 7:00 مساءً<br />
         📌 <strong>اللوكيشن:</strong> <a href="https://g.co/kgs/47ND6P4" target="_blank" style="color: #c94f7c; text-decoration: none;">اضغط هنا للخريطة</a><br />
         📞 <strong>للتواصل:</strong> <a href="tel:01069420990" style="color: #c94f7c; text-decoration: none;">01069420990</a>
       </div>
-      <div id="detailsEn" style="display:none">
+      <div id="detailsEn" style="display:none" class="text-center">
         📍 <strong>Venue:</strong> Pharmacists Palace Hall – Pharmacists Syndicate - Talkha<br />
         🗓️ <strong>Date:</strong> July 24, 2025<br />
         🕖 <strong>Time:</strong> 7:00 PM<br />
         📌 <strong>Location:</strong> <a href="https://g.co/kgs/47ND6P4" target="_blank" style="color: #c94f7c; text-decoration: none;">Click here for map</a><br />
         📞 <strong>Contact:</strong> <a href="tel:01069420990" style="color: #c94f7c; text-decoration: none;">01069420990</a>
       </div>
-      
-      <a class="add-calendar" target="_blank" id="calendarLink"
-        href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Abdelrahman%20%26%20Amaal%20Wedding&dates=20250724T160000Z%2F20250724T190000Z&details=Wedding%20Party%20in%20Talkha%20at%20Pharmacists%20Palace%20Hall&location=Pharmacists%20Palace%20Hall%20Talkha&sf=true&output=xml">
+      <a class="add-calendar btn btn-primary mt-3" target="_blank" id="calendarLink" href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Abdelrahman%20%26%20Amaal%20Wedding&dates=20250724T160000Z%2F20250724T190000Z&details=Wedding%20Party%20in%20Talkha%20at%20Pharmacists%20Palace%20Hall&location=Pharmacists%20Palace%20Hall%20Talkha&sf=true&output=xml">
         <i class="fas fa-calendar-plus"></i> إضافة للتقويم
       </a>
-
-      <div class="social-share">
-        <p style="margin-bottom: 1rem; font-weight: 600;">شاركوا الفرحة معانا:</p>
-        <a href="#" class="share-btn whatsapp" onclick="shareOnWhatsApp()">
-          <i class="fab fa-whatsapp"></i>
-        </a>
-        <a href="#" class="share-btn facebook" onclick="shareOnFacebook()">
-          <i class="fab fa-facebook-f"></i>
-        </a>
-        <a href="#" class="share-btn telegram" onclick="shareOnTelegram()">
-          <i class="fab fa-telegram-plane"></i>
-        </a>
+      <div class="social-share mt-3 text-center">
+        <p class="fw-bold mb-2">شاركوا الفرحة معانا:</p>
+        <a href="#" class="share-btn whatsapp btn btn-success" onclick="shareOnWhatsApp()"><i class="fab fa-whatsapp"></i></a>
+        <a href="#" class="share-btn facebook btn btn-primary" onclick="shareOnFacebook()"><i class="fab fa-facebook-f"></i></a>
+        <a href="#" class="share-btn telegram btn btn-info" onclick="shareOnTelegram()"><i class="fab fa-telegram-plane"></i></a>
       </div>
     </div>
   </div>
-
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
   <script>
-    const form = document.getElementById('rsvpForm');
-    const message = document.getElementById('confirmationMessage');
-    const nameInput = document.getElementById('name');
+    AOS.init();
     let currentLanguage = 'ar';
-
     function createHearts() {
       const heartsContainer = document.querySelector('.hearts');
       if (!heartsContainer) return;
-      heartsContainer.innerHTML = ''; 
+      heartsContainer.innerHTML = '';
       for (let i = 0; i < 25; i++) {
         const heart = document.createElement('div');
         heart.className = 'heart';
@@ -573,120 +173,62 @@
         heartsContainer.appendChild(heart);
       }
     }
-
-    function createFallingHearts() {
-      for (let i = 0; i < 30; i++) {
+    function createConfetti() {
+      const colors = ['#c94f7c', '#f57aa3', '#ff6b9d', '#98FB98', '#FFD700'];
+      const confettiCount = 100;
+      for (let i = 0; i < confettiCount; i++) {
+        const confettiPiece = document.createElement('div');
+        confettiPiece.className = 'confetti';
+        confettiPiece.style.left = Math.random() * 100 + 'vw';
+        confettiPiece.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+        confettiPiece.style.animationDuration = (Math.random() * 3 + 2) + 's';
+        confettiPiece.style.animationDelay = (Math.random() * 1) + 's';
+        if (Math.random() > 0.5) {
+          confettiPiece.style.width = '12px';
+          confettiPiece.style.height = '12px';
+          confettiPiece.style.borderRadius = '50%';
+          confettiPiece.style.transform = `rotate(${Math.random() * 360}deg)`;
+        } else {
+          confettiPiece.style.width = '15px';
+          confettiPiece.style.height = '10px';
+          confettiPiece.style.borderRadius = '20%';
+        }
+        document.body.appendChild(confettiPiece);
         setTimeout(() => {
-          const heart = document.createElement('div');
-          heart.className = 'falling-heart';
-          heart.innerHTML = ['❤️', '💖', '💕', '💓', '💗'][Math.floor(Math.random() * 5)];
-          heart.style.left = Math.random() * 100 + '%';
-          heart.style.animationDuration = (Math.random() * 3 + 2) + 's';
-          heart.style.fontSize = (Math.random() * 20 + 10) + 'px';
-          document.body.appendChild(heart);
-          
-          setTimeout(() => {
-            heart.remove();
-          }, 4000);
-        }, i * 150);
+          confettiPiece.remove();
+        }, 5000);
       }
     }
-
-    form.addEventListener('submit', function (event) {
-      event.preventDefault(); 
-
-      const submitButton = document.getElementById('submitButton');
-      const originalButtonText = submitButton.innerHTML;
-      submitButton.innerHTML = currentLanguage === 'ar' ? 'جار الإرسال...' : 'Sending...';
-      submitButton.disabled = true;
-
-      const formData = new FormData(form);
-      const userName = formData.get('name'); 
-      const formAction = form.getAttribute('action');
-
-      fetch(formAction, {
-        method: 'POST',
-        body: formData,
-        headers: { 'Accept': 'application/json' }
-      }).then(response => {
-        if (response.ok) {
-          const thankYouMsg = currentLanguage === 'ar'
-            ? `💌 شكراً يا ${userName} لتأكيد حضورك! تم استلام بياناتك بنجاح. في انتظارك بكل حب 💖`
-            : `💌 Thank you ${userName} for confirming! Your details have been successfully received. We're waiting for you with love 💖`;
-          
-          document.getElementById('thankYouMessage').innerHTML = thankYouMsg;
-          document.getElementById('successIndicator').style.display = 'block'; 
-          
-          setTimeout(() => { 
-            message.style.display = 'block'; 
-            form.style.display = 'none';
-            createConfetti();
-            createFallingHearts();
-          }, 500);
-
-        } else {
-          response.json().then(data => {
-            let errorMsg = currentLanguage === 'ar' ? "حدث خطأ أثناء إرسال النموذج. " : "An error occurred while submitting the form. ";
-            if (data && data.errors) {
-              errorMsg += data.errors.map(error => error.message).join(", ");
-            } else {
-              errorMsg += currentLanguage === 'ar' ? "يرجى المحاولة مرة أخرى." : "Please try again.";
-            }
-            alert(errorMsg); 
-          }).catch(() => {
-            alert(currentLanguage === 'ar' ? "حدث خطأ غير متوقع من الخادم. يرجى المحاولة مرة أخرى." : "An unexpected error occurred from the server. Please try again.");
-          });
-        }
-      }).catch(error => {
-        console.error('Error submitting form to Formspree:', error);
-        alert(currentLanguage === 'ar' ? "حدث خطأ. يرجى التحقق من اتصالك بالإنترنت والمحاولة مرة أخرى." : "An error occurred. Please check your internet connection and try again.");
-      }).finally(() => {
-        submitButton.innerHTML = originalButtonText;
-        submitButton.disabled = false;
-      });
-    });
-
     function startCountdown() {
       const countdown = document.getElementById('countdown');
       if (!countdown) return;
       const targetDate = new Date('2025-07-24T19:00:00').getTime();
-
       const timer = setInterval(() => {
         const now = new Date().getTime();
         const distance = targetDate - now;
-        
         if (distance < 0) {
           clearInterval(timer);
-          countdown.innerHTML = currentLanguage === 'ar' 
-            ? "🎊 حان وقت الزفاف! 🎊" 
-            : "🎊 It's wedding time! 🎊";
+          countdown.innerHTML = currentLanguage === 'ar' ? "🎊 حان وقت الزفاف! 🎊" : "🎊 It's wedding time! 🎊";
           return;
         }
-        
         const days = Math.floor(distance / (1000 * 60 * 60 * 24));
         const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
         const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
         const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-        
         countdown.innerHTML = currentLanguage === 'ar'
           ? `⏳ ${days} يوم ${hours} ساعة ${minutes} دقيقة ${seconds} ثانية حتى الزفاف!`
           : `⏳ ${days}d ${hours}h ${minutes}m ${seconds}s left until the wedding!`;
       }, 1000);
     }
-
     function switchLanguage(lang) {
       currentLanguage = lang;
       const arBtn = document.getElementById('arBtn');
       const enBtn = document.getElementById('enBtn');
-      
       document.documentElement.setAttribute('lang', lang);
       document.documentElement.setAttribute('dir', lang === 'ar' ? 'rtl' : 'ltr');
-        
       const translations = {
         ar: {
-          dateDisplay: '24 يوليو 2025',
-          title: 'عبدالرحمن وآمال',
-          weddingAnnouncement: 'مدعوون لحفل الزفاف!',
+          title: '👰🏻‍♀️🤵🏻💍❤️ مدعوون لحفل الزفاف!',
           intro: 'انضموا إلينا للاحتفال بزفاف <strong>عبدالرحمن وآمال</strong>',
           namePlaceholder: 'الاسم',
           phonePlaceholder: 'رقم الهاتف',
@@ -706,9 +248,7 @@
           countdownSuffix: " حتى الزفاف!"
         },
         en: {
-          dateDisplay: 'July 24, 2025',
-          title: 'Abdelrahman & Amaal',
-          weddingAnnouncement: 'You\'re Invited!',
+          title: '👰🏻‍♀️🤵🏻💍❤️ You\'re Invited!',
           intro: 'Join us to celebrate the wedding of <strong>Abdelrahman & Amaal</strong>',
           namePlaceholder: 'Your Name',
           phonePlaceholder: 'Phone Number',
@@ -728,92 +268,100 @@
           countdownSuffix: " left until the wedding!"
         }
       };
-
       const currentTranslations = translations[lang];
-
-      document.getElementById('dateDisplay').innerHTML = currentTranslations.dateDisplay;
       document.getElementById('title').innerHTML = currentTranslations.title;
-      document.getElementById('weddingAnnouncement').innerHTML = currentTranslations.weddingAnnouncement;
       document.getElementById('intro').innerHTML = currentTranslations.intro;
       document.getElementById('name').placeholder = currentTranslations.namePlaceholder;
       document.getElementById('phone').placeholder = currentTranslations.phonePlaceholder;
       document.getElementById('message').placeholder = currentTranslations.messagePlaceholder;
       document.getElementById('submitButton').innerHTML = currentTranslations.submitButton;
       document.getElementById('calendarLink').innerHTML = currentTranslations.calendarLink;
-      
       const guestsSelect = document.getElementById('guests');
       guestsSelect.innerHTML = `<option value="">${currentTranslations.guestsDefaultOption}</option>`;
       const guestValues = ["1", "2", "3", "4", "5", "more"];
       currentTranslations.guestOptions.forEach((optionText, index) => {
         guestsSelect.innerHTML += `<option value="${guestValues[index]}">${optionText}</option>`;
       });
-      
       const attendingSelect = document.getElementById('attending');
       attendingSelect.innerHTML = `<option value="" disabled selected>${currentTranslations.attendingDefaultOption}</option>`;
       const attendingValues = ["yes", "no"];
       currentTranslations.attendingOptions.forEach((optionText, index) => {
         attendingSelect.innerHTML += `<option value="${attendingValues[index]}">${optionText}</option>`;
       });
-      
       document.getElementById(lang === 'ar' ? 'detailsAr' : 'detailsEn').style.display = 'block';
       document.getElementById(lang === 'ar' ? 'detailsEn' : 'detailsAr').style.display = 'none';
-      
       arBtn.classList.toggle('active', lang === 'ar');
       enBtn.classList.toggle('active', lang === 'en');
-      
-      startCountdown(); // To update countdown text with new language
+      startCountdown();
     }
-
-    function createConfetti() {
-      const colors = ['#c94f7c', '#f57aa3', '#ff6b9d', '#ffc3dd', '#ffffff'];
-      const confettiCount = 100;
-      for (let i = 0; i < confettiCount; i++) {
-        const confettiPiece = document.createElement('div');
-        confettiPiece.className = 'confetti';
-        confettiPiece.style.left = Math.random() * 100 + 'vw';
-        confettiPiece.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
-        confettiPiece.style.animationDuration = (Math.random() * 2 + 2) + 's';
-        confettiPiece.style.animationDelay = (Math.random() * 1) + 's';
-        if (Math.random() > 0.5) {
-            confettiPiece.style.width = '8px';
-            confettiPiece.style.height = '15px';
-            confettiPiece.style.borderRadius = '2px';
-        } else {
-            confettiPiece.style.width = '10px';
-            confettiPiece.style.height = '10px';
-            confettiPiece.style.borderRadius = '50%';
-        }
-        document.body.appendChild(confettiPiece);
-        setTimeout(() => {
-          confettiPiece.remove();
-        }, 4000);
-      }
-    }
-
     function shareOnWhatsApp() {
       const text = currentLanguage === 'ar' 
         ? 'مدعوون لحضور زفاف عبدالرحمن وآمال - 24 يوليو 2025. لمزيد من التفاصيل: '
         : 'You\'re invited to Abdelrahman & Amaal\'s wedding - July 24, 2025. For more details: ';
-      const url = window.location.href || "YOUR_PUBLISHED_WEBSITE_URL_HERE"; // Fallback if deployed
+      const url = "YOUR_PUBLISHED_WEBSITE_URL";
       window.open(`https://wa.me/?text=${encodeURIComponent(text + url)}`, '_blank');
     }
-
     function shareOnFacebook() {
-      const url = window.location.href || "YOUR_PUBLISHED_WEBSITE_URL_HERE";
+      const url = "YOUR_PUBLISHED_WEBSITE_URL";
       window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`, '_blank');
     }
-
     function shareOnTelegram() {
       const text = currentLanguage === 'ar' 
         ? 'مدعوون لحضور زفاف عبدالرحمن وآمال - 24 يوليو 2025'
         : 'You\'re invited to Abdelrahman & Amaal\'s wedding - July 24, 2025';
-      const url = window.location.href || "YOUR_PUBLISHED_WEBSITE_URL_HERE";
+      const url = "YOUR_PUBLISHED_WEBSITE_URL";
       window.open(`https://t.me/share/url?url=${encodeURIComponent(url)}&text=${encodeURIComponent(text)}`, '_blank');
     }
-
+    const form = document.getElementById('rsvpForm');
+    form.addEventListener('submit', function (event) {
+      event.preventDefault();
+      const submitButton = document.getElementById('submitButton');
+      const originalButtonText = submitButton.innerHTML;
+      submitButton.innerHTML = currentLanguage === 'ar' ? 'جار الإرسال...' : 'Sending...';
+      submitButton.disabled = true;
+      const formData = new FormData(form);
+      const userName = formData.get('name');
+      const formAction = form.getAttribute('action');
+      fetch(formAction, {
+        method: 'POST',
+        body: formData,
+        headers: { 'Accept': 'application/json' }
+      }).then(response => {
+        if (response.ok) {
+          const thankYouMsg = currentLanguage === 'ar'
+            ? `💌 شكراً يا ${userName} لتأكيد حضورك! تم استلام بياناتك بنجاح. في انتظارك بكل حب 💖`
+            : `💌 Thank you ${userName} for confirming! Your details have been successfully received. We're waiting for you with love 💖`;
+          document.getElementById('thankYouMessage').innerHTML = thankYouMsg;
+          document.getElementById('successIndicator').style.display = 'block';
+          setTimeout(() => {
+            document.getElementById('confirmationMessage').style.display = 'block';
+            form.style.display = 'none';
+            createConfetti();
+          }, 500);
+        } else {
+          response.json().then(data => {
+            let errorMsg = currentLanguage === 'ar' ? "حدث خطأ أثناء إرسال النموذج. " : "An error occurred while submitting the form. ";
+            if (data && data.errors) {
+              errorMsg += data.errors.map(error => error.message).join(", ");
+            } else {
+              errorMsg += currentLanguage === 'ar' ? "يرجى المحاولة مرة أخرى." : "Please try again.";
+            }
+            alert(errorMsg);
+          }).catch(() => {
+            alert(currentLanguage === 'ar' ? "حدث خطأ غير متوقع من الخادم. يرجى المحاولة مرة أخرى." : "An unexpected error occurred from the server. Please try again.");
+          });
+        }
+      }).catch(error => {
+        console.error('Error submitting form to Formspree:', error);
+        alert(currentLanguage === 'ar' ? "حدث خطأ. يرجى التحقق من اتصالك بالإنترنت والمحاولة مرة أخرى." : "An error occurred. Please check your internet connection and try again.");
+      }).finally(() => {
+        submitButton.innerHTML = originalButtonText;
+        submitButton.disabled = false;
+      });
+    });
     document.addEventListener('DOMContentLoaded', function() {
       createHearts();
-      switchLanguage('ar'); // Sets default language and calls startCountdown
+      switchLanguage('ar');
     });
   </script>
 </body>
