@@ -3,8 +3,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>عبدالرحمن & آمال - الزفاف</title>
-  <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Cairo:wght@300;400;600;700&display=swap" rel="stylesheet" />
+  <title>Abdelrahman & Amaal Wedding</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet" />
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
   <style>
     * {
@@ -14,93 +15,139 @@
     }
 
     body {
-      font-family: 'Amiri', serif;
-      background: #f9f9f9 url('https://www.transparenttextures.com/patterns/leaves-pattern.png') repeat;
-      background-size: cover;
+      font-family: 'Cairo', sans-serif;
+      background: #f9f7f4;
+      color: #333;
+      min-height: 100vh;
+      position: relative;
+      overflow-x: hidden;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
       padding: 2rem 1rem;
-      color: #333;
-      min-height: 100vh;
-      position: relative;
-      overflow-x: hidden;
     }
 
-    #flowerContainer {
+    body::before {
+      content: '';
       position: fixed;
-      width: 100%;
-      height: 100%;
       top: 0;
       left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, rgba(255,255,255,0.9) 0%, rgba(249,247,244,0.9) 100%);
+      z-index: -2;
+    }
+
+    .top-foliage {
+      position: fixed;
+      top: 0;
+      right: 0;
+      width: 300px;
+      height: 300px;
+      background: url('/home/ubuntu/wedding_assets/colorful_leaves.webp') no-repeat;
+      background-size: contain;
+      background-position: top right;
+      opacity: 0.7;
+      transform: rotate(180deg);
+      z-index: -1;
+      pointer-events: none;
+    }
+
+    .bottom-foliage {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 300px;
+      height: 300px;
+      background: url('/home/ubuntu/wedding_assets/colorful_leaves.webp') no-repeat;
+      background-size: contain;
+      background-position: bottom left;
+      opacity: 0.7;
+      z-index: -1;
+      pointer-events: none;
+    }
+
+    .hearts {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
       pointer-events: none;
       z-index: -1;
     }
 
-    .flower {
+    .heart {
       position: absolute;
-      font-size: 1.8rem;
-      color: rgba(255, 182, 193, 0.7);
-      animation: floatFlower 12s infinite ease-in-out;
+      color: rgba(201, 79, 124, 0.1);
+      animation: float 6s ease-in-out infinite;
     }
 
-    @keyframes floatFlower {
-      0% { transform: translate(0, 0) rotate(0deg) scale(1); }
-      25% { transform: translate(50px, -50px) rotate(90deg) scale(1.3); }
-      50% { transform: translate(0, -100px) rotate(180deg) scale(1); }
-      75% { transform: translate(-50px, -50px) rotate(270deg) scale(1.3); }
-      100% { transform: translate(0, 0) rotate(360deg) scale(1); }
-    }
-
-    .leaf {
-      position: absolute;
-      font-size: 1.5rem;
-      color: rgba(144, 238, 144, 0.7);
-      animation: floatLeaf 10s infinite ease-in-out;
-    }
-
-    @keyframes floatLeaf {
-      0% { transform: translate(0, 0) rotate(0deg); }
-      25% { transform: translate(30px, -30px) rotate(45deg); }
-      50% { transform: translate(0, -60px) rotate(90deg); }
-      75% { transform: translate(-30px, -30px) rotate(135deg); }
-      100% { transform: translate(0, 0) rotate(180deg); }
+    @keyframes float {
+      0%, 100% { transform: translateY(0px) rotate(0deg); }
+      50% { transform: translateY(-20px) rotate(180deg); }
     }
 
     .main-content {
-      text-align: center;
+      display: block;
       width: 100%;
       max-width: 600px;
-      background: rgba(255, 255, 255, 0.9);
-      padding: 2rem;
-      border-radius: 15px;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      animation: slideInUp 0.8s ease-out;
       position: relative;
       z-index: 1;
     }
 
+    @keyframes slideInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
     h1 {
-      font-family: 'Amiri', serif;
-      font-style: italic;
-      font-size: 2.5rem;
-      color: #2f4f4f;
+      font-family: 'Great Vibes', cursive;
+      color: #5a5a5a;
+      margin: 1.5rem 0;
+      font-size: 3rem;
+      text-align: center;
+      font-weight: 400;
+      text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+    }
+
+    .date-display {
+      font-family: 'Cairo', sans-serif;
+      color: #5a5a5a;
+      font-size: 1.5rem;
+      text-align: center;
       margin-bottom: 1rem;
-      text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+      font-weight: 300;
+    }
+
+    .wedding-announcement {
+      font-family: 'Cairo', sans-serif;
+      color: #5a5a5a;
+      font-size: 1.8rem;
+      text-align: center;
+      margin: 1.5rem 0;
+      font-weight: 600;
     }
 
     p {
-      font-size: 1.2rem;
+      text-align: center;
+      margin-bottom: 0.5rem;
       line-height: 1.6;
-      color: #555;
-      margin-bottom: 1rem;
     }
 
     .wedding-banner {
       max-width: 100%;
       width: 100%;
       border-radius: 20px;
-      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+      box-shadow: 0 15px 35px rgba(0,0,0,0.1);
       display: block;
       margin: 0 auto 2rem;
       transition: transform 0.3s ease;
@@ -110,32 +157,13 @@
       transform: scale(1.02);
     }
 
-    @media (min-width: 768px) {
-      body::before {
-        content: '';
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: url('https://www.transparenttextures.com/patterns/leaves-pattern.png');
-        animation: moveLeaves 20s linear infinite;
-        z-index: -1;
-        opacity: 0.4;
-      }
-
-      @keyframes moveLeaves {
-        0% { background-position: 0 0; }
-        50% { background-position: 50% 50%; }
-        100% { background-position: 100% 100%; }
-      }
-    }
-
     form {
       background: rgba(255, 255, 255, 0.95);
-      padding: 2rem;
-      border-radius: 15px;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      padding: 2.5rem 2rem;
+      border-radius: 20px;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255,255,255,0.2);
       max-width: 500px;
       width: 100%;
       margin: 2rem auto;
@@ -149,23 +177,24 @@
     }
 
     .language-btn {
-      background: linear-gradient(45deg, #98fb98, #90ee90);
-      color: #2f4f4f;
+      background: linear-gradient(45deg, #f57aa3, #c94f7c);
+      color: white;
       border: none;
       font-weight: 600;
       padding: 0.8rem 1.5rem;
       border-radius: 25px;
       cursor: pointer;
       transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(201, 79, 124, 0.3);
     }
 
     .language-btn:hover {
       transform: translateY(-2px);
-      box-shadow: 0 5px 15px rgba(144, 238, 144, 0.3);
+      box-shadow: 0 8px 25px rgba(201, 79, 124, 0.4);
     }
 
     .language-btn.active {
-      background: linear-gradient(45deg, #90ee90, #98fb98);
+      background: linear-gradient(45deg, #c94f7c, #a83962);
     }
 
     .input-group {
@@ -178,23 +207,26 @@
       left: 15px;
       top: 50%;
       transform: translateY(-50%);
-      color: #2f4f4f;
+      color: #c94f7c;
+      z-index: 1;
     }
 
     input, select {
       width: 100%;
       padding: 1rem 1rem 1rem 45px;
       border-radius: 15px;
-      border: 2px solid #e0e0e0;
+      border: 2px solid #e1e1e1;
       font-size: 1rem;
-      font-family: 'Amiri', serif;
+      font-family: 'Cairo', sans-serif;
       transition: all 0.3s ease;
+      background: rgba(255,255,255,0.9);
     }
 
     input:focus, select:focus {
       outline: none;
-      border-color: #90ee90;
-      box-shadow: 0 0 10px rgba(144, 238, 144, 0.2);
+      border-color: #c94f7c;
+      box-shadow: 0 0 20px rgba(201, 79, 124, 0.2);
+      transform: translateY(-2px);
     }
 
     button[type="submit"] {
@@ -204,58 +236,82 @@
       border-radius: 15px;
       border: none;
       font-size: 1.1rem;
-      font-weight: 700;
-      background: linear-gradient(45deg, #90ee90, #98fb98);
-      color: #2f4f4f;
+      font-weight: 600;
+      background: linear-gradient(45deg, #c94f7c, #f57aa3);
+      color: white;
       cursor: pointer;
       transition: all 0.3s ease;
+      box-shadow: 0 8px 25px rgba(201, 79, 124, 0.3);
+      font-family: 'Cairo', sans-serif;
     }
 
     button[type="submit"]:hover {
       transform: translateY(-3px);
-      box-shadow: 0 10px 20px rgba(144, 238, 144, 0.3);
+      box-shadow: 0 15px 35px rgba(201, 79, 124, 0.4);
+    }
+    
+    button[type="submit"]:disabled {
+      background: linear-gradient(45deg, #aaa, #ccc);
+      cursor: not-allowed;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+      transform: translateY(0);
     }
 
     .message {
       margin-top: 2rem;
-      background: rgba(255, 255, 255, 0.9);
+      background: linear-gradient(135deg, #fff6fb, #ffe8f3);
       padding: 2rem;
-      border-radius: 15px;
-      border: 2px solid #90ee90;
-      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+      border-radius: 20px;
+      border: 1px solid rgba(201, 79, 124, 0.2);
+      box-shadow: 0 15px 35px rgba(201, 79, 124, 0.1);
       display: none;
       text-align: center;
       max-width: 500px;
       width: 100%;
       margin-left: auto;
       margin-right: auto;
+      animation: fadeInScale 0.8s ease forwards;
+    }
+
+    @keyframes fadeInScale {
+      0% {
+        opacity: 0;
+        transform: scale(0.8);
+      }
+      100% {
+        opacity: 1;
+        transform: scale(1);
+      }
     }
 
     #countdown {
       margin: 2rem 0;
       font-size: 1.3rem;
-      color: #2f4f4f;
+      color: #5a5a5a;
       font-weight: 700;
-      background: rgba(255, 255, 255, 0.8);
+      text-align: center;
+      background: rgba(255,255,255,0.8);
       padding: 1rem;
       border-radius: 15px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
     }
 
     .add-calendar {
       display: inline-block;
       margin-top: 1.5rem;
-      background: linear-gradient(45deg, #90ee90, #98fb98);
-      color: #2f4f4f;
+      background: linear-gradient(45deg, #a83962, #c94f7c);
+      color: white;
       text-decoration: none;
-      font-weight: 700;
+      font-weight: 600;
       padding: 1rem 2rem;
       border-radius: 25px;
       transition: all 0.3s ease;
+      box-shadow: 0 8px 25px rgba(168, 57, 98, 0.3);
     }
 
     .add-calendar:hover {
       transform: translateY(-3px);
-      box-shadow: 0 10px 20px rgba(144, 238, 144, 0.3);
+      box-shadow: 0 15px 35px rgba(168, 57, 98, 0.4);
     }
 
     .social-share {
@@ -271,11 +327,12 @@
       color: white;
       text-decoration: none;
       transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
     }
 
     .share-btn:hover {
       transform: translateY(-3px);
-      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+      box-shadow: 0 8px 25px rgba(0,0,0,0.3);
     }
 
     .whatsapp { background: #25D366; }
@@ -283,8 +340,55 @@
     .telegram { background: #0088cc; }
 
     @media (max-width: 768px) {
-      h1 { font-size: 2rem; }
-      form { padding: 1.5rem; }
+      body {
+        padding: 1rem 0.5rem;
+      }
+      h1 {
+        font-size: 2.5rem;
+      }
+      .date-display {
+        font-size: 1.2rem;
+      }
+      .wedding-announcement {
+        font-size: 1.5rem;
+      }
+      form {
+        padding: 2rem 1.5rem;
+      }
+      .top-foliage, .bottom-foliage {
+        width: 200px;
+        height: 200px;
+      }
+    }
+
+    .sparkle {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .sparkle::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: linear-gradient(45deg, transparent, rgba(255,255,255,0.1), transparent);
+      transform: rotate(45deg);
+      animation: sparkle 3s linear infinite;
+    }
+
+    @keyframes sparkle {
+      0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+      100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+    }
+
+    .success-indicator {
+      color: #27ae60;
+      font-size: 1.1rem;
+      margin-top: 1rem;
+      text-align: center;
+      display: none;
     }
 
     .confetti {
@@ -297,7 +401,7 @@
       pointer-events: none;
       animation: confetti-fall 3s linear forwards;
     }
-
+    
     @keyframes confetti-fall {
       0% {
         transform: translateY(0vh) rotate(0deg);
@@ -308,48 +412,56 @@
         opacity: 0;
       }
     }
+
+    .falling-heart {
+      position: fixed;
+      color: #c94f7c;
+      font-size: 20px;
+      z-index: 1000;
+      pointer-events: none;
+      animation: heart-fall 4s linear forwards;
+      opacity: 0;
+    }
+    
+    @keyframes heart-fall {
+      0% {
+        transform: translateY(-50px) rotate(0deg);
+        opacity: 0;
+      }
+      10% {
+        opacity: 0.8;
+      }
+      90% {
+        opacity: 0.8;
+      }
+      100% {
+        transform: translateY(100vh) rotate(360deg);
+        opacity: 0;
+      }
+    }
   </style>
 </head>
 <body>
-  <div id="leafContainer">
-    <div class="leaf" style="left: 10%; top: 10%; animation-delay: 0s;">🍃</div>
-    <div class="leaf" style="left: 20%; top: 20%; animation-delay: 1s;">🍃</div>
-    <div class="leaf" style="left: 30%; top: 30%; animation-delay: 2s;">🍃</div>
-    <div class="leaf" style="left: 40%; top: 40%; animation-delay: 3s;">🍃</div>
-    <div class="leaf" style="left: 50%; top: 50%; animation-delay: 4s;">🍃</div>
-    <div class="leaf" style="left: 60%; top: 60%; animation-delay: 5s;">🍃</div>
-    <div class="leaf" style="left: 70%; top: 70%; animation-delay: 6s;">🍃</div>
-    <div class="leaf" style="left: 80%; top: 80%; animation-delay: 7s;">🍃</div>
-    <div class="leaf" style="left: 90%; top: 90%; animation-delay: 8s;">🍃</div>
-  </div>
+  <div class="top-foliage"></div>
+  <div class="bottom-foliage"></div>
+  <div class="hearts"></div>
 
-  <div id="flowerContainer">
-    <div class="flower" style="left: 15%; top: 15%; animation-delay: 0s;">🌸</div>
-    <div class="flower" style="left: 25%; top: 25%; animation-delay: 2s;">🌸</div>
-    <div class="flower" style="left: 35%; top: 35%; animation-delay: 4s;">🌸</div>
-    <div class="flower" style="left: 45%; top: 45%; animation-delay: 6s;">🌸</div>
-    <div class="flower" style="left: 55%; top: 55%; animation-delay: 8s;">🌸</div>
-    <div class="flower" style="left: 65%; top: 65%; animation-delay: 1s;">🌸</div>
-    <div class="flower" style="left: 75%; top: 75%; animation-delay: 3s;">🌸</div>
-    <div class="flower" style="left: 85%; top: 85%; animation-delay: 5s;">🌸</div>
-    <div class="flower" style="left: 20%; top: 40%; animation-delay: 7s;">🌸</div>
-    <div class="flower" style="left: 70%; top: 30%; animation-delay: 9s;">🌸</div>
-    <div class="flower" style="left: 90%; top: 60%; animation-delay: 11s;">🌸</div>
-  </div>
-
-  <div class="main-content">
-    <!-- تأكد إن ملف Wedding.jpg موجود في نفس المجلد، لو المسار مختلف عدله -->
+  <div class="main-content" id="mainContent">
     <p align="center">
-      <img src="./Wedding.jpg" alt="Wedding Photo" class="wedding-banner" />
+      <img src="./Wedding.jpg" alt="Wedding Photo" style="width: 600px; max-width: 100%; height: auto; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.1);" />
     </p>
-    <h1 id="title">👰🏻‍♀️🤵🏻💍❤️ مدعوون لحفل زفافنا!</h1>
+    
+    <div class="date-display" id="dateDisplay">24 يوليو 2025</div>
+    <h1 id="title">عبدالرحمن وآمال</h1>
+    <div class="wedding-announcement" id="weddingAnnouncement">مدعوون لحفل الزفاف!</div>
+    
     <div id="countdown"></div>
-    <p id="intro">انضموا إلينا للاحتفال بزفاف <strong>🎉💃🏻 عبدالرحمن وآمال</strong></p>
+    <p id="intro">انضموا إلينا للاحتفال بزفاف <strong>عبدالرحمن وآمال</strong></p>
 
     <form id="rsvpForm" action="https://formspree.io/f/xnndeoea" method="POST">
       <div class="language-toggle">
-        <button class="language-btn active" type="button" onclick="switchLanguage('ar')">العربية</button>
-        <button class="language-btn" type="button" onclick="switchLanguage('en')">English</button>
+        <button class="language-btn active" type="button" onclick="switchLanguage('ar')" id="arBtn">العربية</button>
+        <button class="language-btn" type="button" onclick="switchLanguage('en')" id="enBtn">English</button>
       </div>
 
       <div class="input-group">
@@ -374,7 +486,7 @@
           <option value="more">أكثر من 5</option>
         </select>
       </div>
-
+      
       <div class="input-group">
         <i class="fas fa-check-circle"></i>
         <select name="attending" id="attending" required>
@@ -388,25 +500,38 @@
         <i class="fas fa-comment"></i>
         <input type="text" id="message" name="message" placeholder="رسالة خاصة (اختياري)" />
       </div>
-
+      
       <input type="hidden" name="_subject" value="تأكيد حضور جديد لزفاف عبدالرحمن وآمال!" />
 
-      <button type="submit" id="submitButton">
+      <button type="submit" id="submitButton" class="sparkle">
         <i class="fas fa-check"></i> تأكيد الحضور
       </button>
+      
+      <div class="success-indicator" id="successIndicator">
+        <i class="fas fa-check-circle"></i> تم إرسال التأكيد بنجاح!
+      </div>
     </form>
 
     <div class="message" id="confirmationMessage">
-      <p id="thankYouMessage" style="font-weight: bold; font-size: 1.2rem; color: #2f4f4f;">
+      <span id="thankYouMessage" style="display:block; font-weight:bold; font-size:1.2rem; color:#a83962;">
         💌 حابين تشاركوا لحظتنا السعيدة؟ تأكيدك هو أول فرحة! ويسعدنا تكون جزء من قصتنا الجميلة… في انتظارك بكل حب 💖
-      </p>
-      <p>
+      </span>
+      <br /><br />
+      <div id="detailsAr">
         📍 <strong>المكان:</strong> قاعـة قصـر الصيادلة - نقابة الصيادلة - طلخا<br />
         🗓️ <strong>التاريخ:</strong> 24 يوليو 2025<br />
         🕖 <strong>الساعة:</strong> 7:00 مساءً<br />
-        📌 <strong>اللوكيشن:</strong> <a href="https://g.co/kgs/47ND6P4" target="_blank" style="color: #2f4f4f;">اضغط هنا للخريطة</a><br />
-        📞 <strong>للتواصل:</strong> <a href="tel:01069420990" style="color: #2f4f4f;">01069420990</a>
-      </p>
+        📌 <strong>اللوكيشن:</strong> <a href="https://g.co/kgs/47ND6P4" target="_blank" style="color: #c94f7c; text-decoration: none;">اضغط هنا للخريطة</a><br />
+        📞 <strong>للتواصل:</strong> <a href="tel:01069420990" style="color: #c94f7c; text-decoration: none;">01069420990</a>
+      </div>
+      <div id="detailsEn" style="display:none">
+        📍 <strong>Venue:</strong> Pharmacists Palace Hall – Pharmacists Syndicate - Talkha<br />
+        🗓️ <strong>Date:</strong> July 24, 2025<br />
+        🕖 <strong>Time:</strong> 7:00 PM<br />
+        📌 <strong>Location:</strong> <a href="https://g.co/kgs/47ND6P4" target="_blank" style="color: #c94f7c; text-decoration: none;">Click here for map</a><br />
+        📞 <strong>Contact:</strong> <a href="tel:01069420990" style="color: #c94f7c; text-decoration: none;">01069420990</a>
+      </div>
+      
       <a class="add-calendar" target="_blank" id="calendarLink"
         href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Abdelrahman%20%26%20Amaal%20Wedding&dates=20250724T160000Z%2F20250724T190000Z&details=Wedding%20Party%20in%20Talkha%20at%20Pharmacists%20Palace%20Hall&location=Pharmacists%20Palace%20Hall%20Talkha&sf=true&output=xml">
         <i class="fas fa-calendar-plus"></i> إضافة للتقويم
@@ -430,29 +555,119 @@
   <script>
     const form = document.getElementById('rsvpForm');
     const message = document.getElementById('confirmationMessage');
+    const nameInput = document.getElementById('name');
     let currentLanguage = 'ar';
 
+    function createHearts() {
+      const heartsContainer = document.querySelector('.hearts');
+      if (!heartsContainer) return;
+      heartsContainer.innerHTML = ''; 
+      for (let i = 0; i < 25; i++) {
+        const heart = document.createElement('div');
+        heart.className = 'heart';
+        heart.innerHTML = '💖';
+        heart.style.left = Math.random() * 100 + '%';
+        heart.style.animationDelay = Math.random() * 6 + 's';
+        heart.style.fontSize = (Math.random() * 20 + 10) + 'px';
+        heart.style.opacity = Math.random() * 0.5 + 0.2;
+        heartsContainer.appendChild(heart);
+      }
+    }
+
+    function createFallingHearts() {
+      for (let i = 0; i < 30; i++) {
+        setTimeout(() => {
+          const heart = document.createElement('div');
+          heart.className = 'falling-heart';
+          heart.innerHTML = ['❤️', '💖', '💕', '💓', '💗'][Math.floor(Math.random() * 5)];
+          heart.style.left = Math.random() * 100 + '%';
+          heart.style.animationDuration = (Math.random() * 3 + 2) + 's';
+          heart.style.fontSize = (Math.random() * 20 + 10) + 'px';
+          document.body.appendChild(heart);
+          
+          setTimeout(() => {
+            heart.remove();
+          }, 4000);
+        }, i * 150);
+      }
+    }
+
     form.addEventListener('submit', function (event) {
-      event.preventDefault();
-      message.style.display = 'block';
-      form.style.display = 'none';
-      createConfetti();
+      event.preventDefault(); 
+
+      const submitButton = document.getElementById('submitButton');
+      const originalButtonText = submitButton.innerHTML;
+      submitButton.innerHTML = currentLanguage === 'ar' ? 'جار الإرسال...' : 'Sending...';
+      submitButton.disabled = true;
+
+      const formData = new FormData(form);
+      const userName = formData.get('name'); 
+      const formAction = form.getAttribute('action');
+
+      fetch(formAction, {
+        method: 'POST',
+        body: formData,
+        headers: { 'Accept': 'application/json' }
+      }).then(response => {
+        if (response.ok) {
+          const thankYouMsg = currentLanguage === 'ar'
+            ? `💌 شكراً يا ${userName} لتأكيد حضورك! تم استلام بياناتك بنجاح. في انتظارك بكل حب 💖`
+            : `💌 Thank you ${userName} for confirming! Your details have been successfully received. We're waiting for you with love 💖`;
+          
+          document.getElementById('thankYouMessage').innerHTML = thankYouMsg;
+          document.getElementById('successIndicator').style.display = 'block'; 
+          
+          setTimeout(() => { 
+            message.style.display = 'block'; 
+            form.style.display = 'none';
+            createConfetti();
+            createFallingHearts();
+          }, 500);
+
+        } else {
+          response.json().then(data => {
+            let errorMsg = currentLanguage === 'ar' ? "حدث خطأ أثناء إرسال النموذج. " : "An error occurred while submitting the form. ";
+            if (data && data.errors) {
+              errorMsg += data.errors.map(error => error.message).join(", ");
+            } else {
+              errorMsg += currentLanguage === 'ar' ? "يرجى المحاولة مرة أخرى." : "Please try again.";
+            }
+            alert(errorMsg); 
+          }).catch(() => {
+            alert(currentLanguage === 'ar' ? "حدث خطأ غير متوقع من الخادم. يرجى المحاولة مرة أخرى." : "An unexpected error occurred from the server. Please try again.");
+          });
+        }
+      }).catch(error => {
+        console.error('Error submitting form to Formspree:', error);
+        alert(currentLanguage === 'ar' ? "حدث خطأ. يرجى التحقق من اتصالك بالإنترنت والمحاولة مرة أخرى." : "An error occurred. Please check your internet connection and try again.");
+      }).finally(() => {
+        submitButton.innerHTML = originalButtonText;
+        submitButton.disabled = false;
+      });
     });
 
     function startCountdown() {
       const countdown = document.getElementById('countdown');
+      if (!countdown) return;
       const targetDate = new Date('2025-07-24T19:00:00').getTime();
-      setInterval(() => {
+
+      const timer = setInterval(() => {
         const now = new Date().getTime();
         const distance = targetDate - now;
+        
         if (distance < 0) {
-          countdown.innerHTML = currentLanguage === 'ar' ? "🎊 حان وقت الزفاف! 🎊" : "🎊 It's wedding time! 🎊";
+          clearInterval(timer);
+          countdown.innerHTML = currentLanguage === 'ar' 
+            ? "🎊 حان وقت الزفاف! 🎊" 
+            : "🎊 It's wedding time! 🎊";
           return;
         }
+        
         const days = Math.floor(distance / (1000 * 60 * 60 * 24));
         const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
         const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
         const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+        
         countdown.innerHTML = currentLanguage === 'ar'
           ? `⏳ ${days} يوم ${hours} ساعة ${minutes} دقيقة ${seconds} ثانية حتى الزفاف!`
           : `⏳ ${days}d ${hours}h ${minutes}m ${seconds}s left until the wedding!`;
@@ -461,12 +676,17 @@
 
     function switchLanguage(lang) {
       currentLanguage = lang;
-      const arBtn = document.querySelector('#arBtn');
-      const enBtn = document.querySelector('#enBtn');
-
+      const arBtn = document.getElementById('arBtn');
+      const enBtn = document.getElementById('enBtn');
+      
+      document.documentElement.setAttribute('lang', lang);
+      document.documentElement.setAttribute('dir', lang === 'ar' ? 'rtl' : 'ltr');
+        
       const translations = {
         ar: {
-          title: '👰🏻‍♀️🤵🏻💍❤️ مدعوون لحفل زفافنا!',
+          dateDisplay: '24 يوليو 2025',
+          title: 'عبدالرحمن وآمال',
+          weddingAnnouncement: 'مدعوون لحفل الزفاف!',
           intro: 'انضموا إلينا للاحتفال بزفاف <strong>عبدالرحمن وآمال</strong>',
           namePlaceholder: 'الاسم',
           phonePlaceholder: 'رقم الهاتف',
@@ -477,11 +697,18 @@
           messagePlaceholder: 'رسالة خاصة (اختياري)',
           submitButton: '<i class="fas fa-check"></i> تأكيد الحضور',
           calendarLink: '<i class="fas fa-calendar-plus"></i> إضافة للتقويم',
-          thankYouMessage: '💌 حابين تشاركوا لحظتنا السعيدة؟ تأكيدك هو أول فرحة! ويسعدنا تكون جزء من قصتنا الجميلة… في انتظارك بكل حب 💖',
-          details: '📍 <strong>المكان:</strong> قاعـة قصـر الصيادلة - نقابة الصيادلة - طلخا<br />🗓️ <strong>التاريخ:</strong> 24 يوليو 2025<br />🕖 <strong>الساعة:</strong> 7:00 مساءً<br />📌 <strong>اللوكيشن:</strong> <a href="https://g.co/kgs/47ND6P4" target="_blank" style="color: #2f4f4f;">اضغط هنا للخريطة</a><br />📞 <strong>للتواصل:</strong> <a href="tel:01069420990" style="color: #2f4f4f;">01069420990</a>'
+          countdownWeddingTime: "🎊 حان وقت الزفاف! 🎊",
+          countdownUnitDays: "يوم",
+          countdownUnitHours: "ساعة",
+          countdownUnitMinutes: "دقيقة",
+          countdownUnitSeconds: "ثانية",
+          countdownPrefix: "⏳ ",
+          countdownSuffix: " حتى الزفاف!"
         },
         en: {
-          title: '👰🏻‍♀️🤵🏻💍❤️ You\'re Invited to Our Wedding!',
+          dateDisplay: 'July 24, 2025',
+          title: 'Abdelrahman & Amaal',
+          weddingAnnouncement: 'You\'re Invited!',
           intro: 'Join us to celebrate the wedding of <strong>Abdelrahman & Amaal</strong>',
           namePlaceholder: 'Your Name',
           phonePlaceholder: 'Phone Number',
@@ -492,43 +719,53 @@
           messagePlaceholder: 'Special Message (Optional)',
           submitButton: '<i class="fas fa-check"></i> Confirm Attendance',
           calendarLink: '<i class="fas fa-calendar-plus"></i> Add to Calendar',
-          thankYouMessage: '💌 We’d love for you to share our special moment! Your confirmation is the first joy! We can’t wait to have you as part of our beautiful story… With all our love 💖',
-          details: '📍 <strong>Venue:</strong> Pharmacists Palace Hall – Pharmacists Syndicate - Talkha<br />🗓️ <strong>Date:</strong> July 24, 2025<br />🕖 <strong>Time:</strong> 7:00 PM<br />📌 <strong>Location:</strong> <a href="https://g.co/kgs/47ND6P4" target="_blank" style="color: #2f4f4f;">Click here for map</a><br />📞 <strong>Contact:</strong> <a href="tel:01069420990" style="color: #2f4f4f;">01069420990</a>'
+          countdownWeddingTime: "🎊 It's wedding time! 🎊",
+          countdownUnitDays: "d",
+          countdownUnitHours: "h",
+          countdownUnitMinutes: "m",
+          countdownUnitSeconds: "s",
+          countdownPrefix: "⏳ ",
+          countdownSuffix: " left until the wedding!"
         }
       };
 
-      const t = translations[lang];
+      const currentTranslations = translations[lang];
 
-      document.getElementById('title').innerHTML = t.title;
-      document.getElementById('intro').innerHTML = t.intro;
-      document.getElementById('name').placeholder = t.namePlaceholder;
-      document.getElementById('phone').placeholder = t.phonePlaceholder;
-      document.getElementById('message').placeholder = t.messagePlaceholder;
-      document.getElementById('submitButton').innerHTML = t.submitButton;
-      document.getElementById('calendarLink').innerHTML = t.calendarLink;
-      document.getElementById('thankYouMessage').innerHTML = t.thankYouMessage;
-      document.getElementById('confirmationMessage').querySelector('p:nth-child(2)').innerHTML = t.details;
-
+      document.getElementById('dateDisplay').innerHTML = currentTranslations.dateDisplay;
+      document.getElementById('title').innerHTML = currentTranslations.title;
+      document.getElementById('weddingAnnouncement').innerHTML = currentTranslations.weddingAnnouncement;
+      document.getElementById('intro').innerHTML = currentTranslations.intro;
+      document.getElementById('name').placeholder = currentTranslations.namePlaceholder;
+      document.getElementById('phone').placeholder = currentTranslations.phonePlaceholder;
+      document.getElementById('message').placeholder = currentTranslations.messagePlaceholder;
+      document.getElementById('submitButton').innerHTML = currentTranslations.submitButton;
+      document.getElementById('calendarLink').innerHTML = currentTranslations.calendarLink;
+      
       const guestsSelect = document.getElementById('guests');
-      guestsSelect.innerHTML = `<option value="">${t.guestsDefaultOption}</option>`;
-      ['1', '2', '3', '4', '5', 'more'].forEach((val, idx) => {
-        guestsSelect.innerHTML += `<option value="${val}">${t.guestOptions[idx]}</option>`;
+      guestsSelect.innerHTML = `<option value="">${currentTranslations.guestsDefaultOption}</option>`;
+      const guestValues = ["1", "2", "3", "4", "5", "more"];
+      currentTranslations.guestOptions.forEach((optionText, index) => {
+        guestsSelect.innerHTML += `<option value="${guestValues[index]}">${optionText}</option>`;
       });
-
+      
       const attendingSelect = document.getElementById('attending');
-      attendingSelect.innerHTML = `<option value="" disabled selected>${t.attendingDefaultOption}</option>`;
-      ['yes', 'no'].forEach((val, idx) => {
-        attendingSelect.innerHTML += `<option value="${val}">${t.attendingOptions[idx]}</option>`;
+      attendingSelect.innerHTML = `<option value="" disabled selected>${currentTranslations.attendingDefaultOption}</option>`;
+      const attendingValues = ["yes", "no"];
+      currentTranslations.attendingOptions.forEach((optionText, index) => {
+        attendingSelect.innerHTML += `<option value="${attendingValues[index]}">${optionText}</option>`;
       });
-
+      
+      document.getElementById(lang === 'ar' ? 'detailsAr' : 'detailsEn').style.display = 'block';
+      document.getElementById(lang === 'ar' ? 'detailsEn' : 'detailsAr').style.display = 'none';
+      
       arBtn.classList.toggle('active', lang === 'ar');
       enBtn.classList.toggle('active', lang === 'en');
-
-      startCountdown();
+      
+      startCountdown(); // To update countdown text with new language
     }
 
     function createConfetti() {
-      const colors = ['#90ee90', '#ffb6c1', '#ff6b9d', '#98fb98', '#ffffff'];
+      const colors = ['#c94f7c', '#f57aa3', '#ff6b9d', '#ffc3dd', '#ffffff'];
       const confettiCount = 100;
       for (let i = 0; i < confettiCount; i++) {
         const confettiPiece = document.createElement('div');
@@ -537,7 +774,15 @@
         confettiPiece.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
         confettiPiece.style.animationDuration = (Math.random() * 2 + 2) + 's';
         confettiPiece.style.animationDelay = (Math.random() * 1) + 's';
-        confettiPiece.innerHTML = '❤️';
+        if (Math.random() > 0.5) {
+            confettiPiece.style.width = '8px';
+            confettiPiece.style.height = '15px';
+            confettiPiece.style.borderRadius = '2px';
+        } else {
+            confettiPiece.style.width = '10px';
+            confettiPiece.style.height = '10px';
+            confettiPiece.style.borderRadius = '50%';
+        }
         document.body.appendChild(confettiPiece);
         setTimeout(() => {
           confettiPiece.remove();
@@ -546,46 +791,29 @@
     }
 
     function shareOnWhatsApp() {
-      const text = currentLanguage === 'ar'
+      const text = currentLanguage === 'ar' 
         ? 'مدعوون لحضور زفاف عبدالرحمن وآمال - 24 يوليو 2025. لمزيد من التفاصيل: '
         : 'You\'re invited to Abdelrahman & Amaal\'s wedding - July 24, 2025. For more details: ';
-      window.open(`https://wa.me/?text=${encodeURIComponent(text + window.location.href)}`, '_blank');
+      const url = window.location.href || "YOUR_PUBLISHED_WEBSITE_URL_HERE"; // Fallback if deployed
+      window.open(`https://wa.me/?text=${encodeURIComponent(text + url)}`, '_blank');
     }
 
     function shareOnFacebook() {
-      window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(window.location.href)}`, '_blank');
+      const url = window.location.href || "YOUR_PUBLISHED_WEBSITE_URL_HERE";
+      window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`, '_blank');
     }
 
     function shareOnTelegram() {
-      const text = currentLanguage === 'ar'
+      const text = currentLanguage === 'ar' 
         ? 'مدعوون لحضور زفاف عبدالرحمن وآمال - 24 يوليو 2025'
         : 'You\'re invited to Abdelrahman & Amaal\'s wedding - July 24, 2025';
-      window.open(`https://t.me/share/url?url=${encodeURIComponent(window.location.href)}&text=${encodeURIComponent(text)}`, '_blank');
+      const url = window.location.href || "YOUR_PUBLISHED_WEBSITE_URL_HERE";
+      window.open(`https://t.me/share/url?url=${encodeURIComponent(url)}&text=${encodeURIComponent(text)}`, '_blank');
     }
 
     document.addEventListener('DOMContentLoaded', function() {
-      startCountdown();
-      switchLanguage('ar');
-      const leafContainer = document.getElementById('leafContainer');
-      const flowerContainer = document.getElementById('flowerContainer');
-      for (let i = 0; i < 15; i++) {
-        const leaf = document.createElement('div');
-        leaf.className = 'leaf';
-        leaf.style.left = Math.random() * 100 + '%';
-        leaf.style.top = Math.random() * 100 + '%';
-        leaf.style.animationDelay = Math.random() * 10 + 's';
-        leaf.innerHTML = '🍃';
-        leafContainer.appendChild(leaf);
-      }
-      for (let i = 0; i < 12; i++) { // زيادة عدد الزهور
-        const flower = document.createElement('div');
-        flower.className = 'flower';
-        flower.style.left = Math.random() * 100 + '%';
-        flower.style.top = Math.random() * 100 + '%';
-        flower.style.animationDelay = Math.random() * 12 + 's';
-        flower.innerHTML = '🌸';
-        flowerContainer.appendChild(flower);
-      }
+      createHearts();
+      switchLanguage('ar'); // Sets default language and calls startCountdown
     });
   </script>
 </body>
