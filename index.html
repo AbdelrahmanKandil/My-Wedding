@@ -28,19 +28,29 @@
       overflow-x: hidden;
     }
 
-    /* تأثير حركة الأوراق */
+    /* زيادة عدد الأوراق وتحسين الانيميشن */
+    #leafContainer {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      pointer-events: none;
+      z-index: -1;
+    }
+
     .leaf {
       position: absolute;
       font-size: 1.5rem;
-      color: rgba(144, 238, 144, 0.7); /* أخضر فاتح شفاف */
-      animation: floatLeaf 8s infinite ease-in-out;
+      color: rgba(144, 238, 144, 0.7);
+      animation: floatLeaf 10s infinite ease-in-out;
     }
 
     @keyframes floatLeaf {
       0% { transform: translate(0, 0) rotate(0deg); }
-      25% { transform: translate(20px, -20px) rotate(45deg); }
-      50% { transform: translate(0, -40px) rotate(90deg); }
-      75% { transform: translate(-20px, -20px) rotate(135deg); }
+      25% { transform: translate(30px, -30px) rotate(45deg); }
+      50% { transform: translate(0, -60px) rotate(90deg); }
+      75% { transform: translate(-30px, -30px) rotate(135deg); }
       100% { transform: translate(0, 0) rotate(180deg); }
     }
 
@@ -72,7 +82,22 @@
       margin-bottom: 1rem;
     }
 
-    /* إضافة أوراق متحركة */
+    /* تنسيق صورة الهيدر */
+    .wedding-banner {
+      max-width: 100%;
+      width: 100%;
+      border-radius: 20px;
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+      display: block;
+      margin: 0 auto 2rem;
+      transition: transform 0.3s ease;
+    }
+
+    .wedding-banner:hover {
+      transform: scale(1.02);
+    }
+
+    /* خلفية متحركة */
     @media (min-width: 768px) {
       body::before {
         content: '';
@@ -82,13 +107,14 @@
         width: 100%;
         height: 100%;
         background: url('https://www.transparenttextures.com/patterns/leaves-pattern.png');
-        animation: moveLeaves 15s linear infinite;
+        animation: moveLeaves 20s linear infinite;
         z-index: -1;
-        opacity: 0.3;
+        opacity: 0.4;
       }
 
       @keyframes moveLeaves {
         0% { background-position: 0 0; }
+        50% { background-position: 50% 50%; }
         100% { background-position: 100% 100%; }
       }
     }
@@ -111,7 +137,7 @@
     }
 
     .language-btn {
-      background: linear-gradient(45deg, #98fb98, #90ee90); /* أخضر هادئ */
+      background: linear-gradient(45deg, #98fb98, #90ee90);
       color: #2f4f4f;
       border: none;
       font-weight: 600;
@@ -251,15 +277,24 @@
   </style>
 </head>
 <body>
-  <!-- إضافة أوراق متحركة عشوائية -->
-  <div id="leafContainer" style="position: fixed; width: 100%; height: 100%; top: 0; left: 0; pointer-events: none; z-index: -1;">
-    <div class="leaf" style="left: 10%; top: 20%; animation-delay: 0s;">🍃</div>
-    <div class="leaf" style="left: 30%; top: 40%; animation-delay: 2s;">🍃</div>
-    <div class="leaf" style="left: 50%; top: 60%; animation-delay: 4s;">🍃</div>
-    <div class="leaf" style="left: 70%; top: 30%; animation-delay: 6s;">🍃</div>
+  <!-- زيادة عدد الأوراق المتحركة -->
+  <div id="leafContainer">
+    <div class="leaf" style="left: 10%; top: 10%; animation-delay: 0s;">🍃</div>
+    <div class="leaf" style="left: 20%; top: 20%; animation-delay: 1s;">🍃</div>
+    <div class="leaf" style="left: 30%; top: 30%; animation-delay: 2s;">🍃</div>
+    <div class="leaf" style="left: 40%; top: 40%; animation-delay: 3s;">🍃</div>
+    <div class="leaf" style="left: 50%; top: 50%; animation-delay: 4s;">🍃</div>
+    <div class="leaf" style="left: 60%; top: 60%; animation-delay: 5s;">🍃</div>
+    <div class="leaf" style="left: 70%; top: 70%; animation-delay: 6s;">🍃</div>
+    <div class="leaf" style="left: 80%; top: 80%; animation-delay: 7s;">🍃</div>
+    <div class="leaf" style="left: 90%; top: 90%; animation-delay: 8s;">🍃</div>
   </div>
 
   <div class="main-content">
+    <!-- إضافة صورة الهيدر -->
+    <p align="center">
+      <img src="./Wedding.jpg" alt="Wedding Photo" class="wedding-banner" />
+    </p>
     <h1>👰🏻‍♀️🤵🏻💍❤️ مدعوون لحفل زفافنا!</h1>
     <div id="countdown"></div>
     <p>انضموا إلينا للاحتفال بزفاف <strong>عبدالرحمن وآمال</strong></p>
@@ -374,7 +409,7 @@
     }
 
     function switchLanguage(lang) {
-      // هنا يمكنك إضافة ترجمة إذا احتجت
+      // يمكنك إضافة ترجمة إذا احتجت
     }
 
     function shareOnWhatsApp() {
@@ -393,6 +428,17 @@
 
     document.addEventListener('DOMContentLoaded', function() {
       startCountdown();
+      // إضافة أوراق عشوائية أكثر
+      const leafContainer = document.getElementById('leafContainer');
+      for (let i = 0; i < 15; i++) {
+        const leaf = document.createElement('div');
+        leaf.className = 'leaf';
+        leaf.style.left = Math.random() * 100 + '%';
+        leaf.style.top = Math.random() * 100 + '%';
+        leaf.style.animationDelay = Math.random() * 10 + 's';
+        leaf.innerHTML = '🍃';
+        leafContainer.appendChild(leaf);
+      }
     });
   </script>
 </body>
