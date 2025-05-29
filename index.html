@@ -28,8 +28,8 @@
       overflow-x: hidden;
     }
 
-    /* زيادة عدد الأوراق وتحسين الانيميشن */
-    #leafContainer {
+    /* زيادة تأثير الزهور مع الأوراق */
+    #flowerContainer {
       position: fixed;
       width: 100%;
       height: 100%;
@@ -37,6 +37,21 @@
       left: 0;
       pointer-events: none;
       z-index: -1;
+    }
+
+    .flower {
+      position: absolute;
+      font-size: 1.8rem;
+      color: rgba(255, 182, 193, 0.7);
+      animation: floatFlower 12s infinite ease-in-out;
+    }
+
+    @keyframes floatFlower {
+      0% { transform: translate(0, 0) rotate(0deg) scale(1); }
+      25% { transform: translate(40px, -40px) rotate(90deg) scale(1.2); }
+      50% { transform: translate(0, -80px) rotate(180deg) scale(1); }
+      75% { transform: translate(-40px, -40px) rotate(270deg) scale(1.2); }
+      100% { transform: translate(0, 0) rotate(360deg) scale(1); }
     }
 
     .leaf {
@@ -82,7 +97,6 @@
       margin-bottom: 1rem;
     }
 
-    /* تنسيق صورة الهيدر */
     .wedding-banner {
       max-width: 100%;
       width: 100%;
@@ -97,7 +111,6 @@
       transform: scale(1.02);
     }
 
-    /* خلفية متحركة */
     @media (min-width: 768px) {
       body::before {
         content: '';
@@ -263,7 +276,8 @@
 
     .share-btn:hover {
       transform: translateY(-3px);
-      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+      box-shadow: 0 5px 15px rgba(0, 0ier: 0;
+      background: #25D366;
     }
 
     .whatsapp { background: #25D366; }
@@ -274,10 +288,32 @@
       h1 { font-size: 2rem; }
       form { padding: 1.5rem; }
     }
+
+    /* تأثير القلوب */
+    .confetti {
+      position: fixed;
+      top: -10px;
+      width: 10px;
+      height: 30px;
+      opacity: 0.8;
+      z-index: 1000;
+      pointer-events: none;
+      animation: confetti-fall 3s linear forwards;
+    }
+
+    @keyframes confetti-fall {
+      0% {
+        transform: translateY(0vh) rotate(0deg);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(100vh) rotate(720deg);
+        opacity: 0;
+      }
+    }
   </style>
 </head>
 <body>
-  <!-- زيادة عدد الأوراق المتحركة -->
   <div id="leafContainer">
     <div class="leaf" style="left: 10%; top: 10%; animation-delay: 0s;">🍃</div>
     <div class="leaf" style="left: 20%; top: 20%; animation-delay: 1s;">🍃</div>
@@ -290,14 +326,25 @@
     <div class="leaf" style="left: 90%; top: 90%; animation-delay: 8s;">🍃</div>
   </div>
 
+  <div id="flowerContainer">
+    <div class="flower" style="left: 15%; top: 15%; animation-delay: 0s;">🌸</div>
+    <div class="flower" style="left: 25%; top: 25%; animation-delay: 2s;">🌸</div>
+    <div class="flower" style="left: 35%; top: 35%; animation-delay: 4s;">🌸</div>
+    <div class="flower" style="left: 45%; top: 45%; animation-delay: 6s;">🌸</div>
+    <div class="flower" style="left: 55%; top: 55%; animation-delay: 8s;">🌸</div>
+    <div class="flower" style="left: 65%; top: 65%; animation-delay: 1s;">🌸</div>
+    <div class="flower" style="left: 75%; top: 75%; animation-delay: 3s;">🌸</div>
+    <div class="flower" style="left: 85%; top: 85%; animation-delay: 5s;">🌸</div>
+  </div>
+
   <div class="main-content">
-    <!-- إضافة صورة الهيدر -->
+    <!-- تأكد إن ملف Wedding.jpg موجود في نفس المجلد، لو المسار مختلف عدله -->
     <p align="center">
       <img src="./Wedding.jpg" alt="Wedding Photo" class="wedding-banner" />
     </p>
-    <h1>👰🏻‍♀️🤵🏻💍❤️ مدعوون لحفل زفافنا!</h1>
+    <h1 id="title">👰🏻‍♀️🤵🏻💍❤️ مدعوون لحفل زفافنا!</h1>
     <div id="countdown"></div>
-    <p>انضموا إلينا للاحتفال بزفاف <strong>عبدالرحمن وآمال</strong></p>
+    <p id="intro">انضموا إلينا للاحتفال بزفاف <strong>عبدالرحمن وآمال</strong></p>
 
     <form id="rsvpForm" action="https://formspree.io/f/xnndeoea" method="POST">
       <div class="language-toggle">
@@ -327,7 +374,7 @@
           <option value="more">أكثر من 5</option>
         </select>
       </div>
-      
+
       <div class="input-group">
         <i class="fas fa-check-circle"></i>
         <select name="attending" id="attending" required>
@@ -341,7 +388,7 @@
         <i class="fas fa-comment"></i>
         <input type="text" id="message" name="message" placeholder="رسالة خاصة (اختياري)" />
       </div>
-      
+
       <input type="hidden" name="_subject" value="تأكيد حضور جديد لزفاف عبدالرحمن وآمال!" />
 
       <button type="submit" id="submitButton">
@@ -350,16 +397,24 @@
     </form>
 
     <div class="message" id="confirmationMessage">
-      <p style="font-weight: bold; font-size: 1.2rem; color: #2f4f4f;">
+      <p id="thankYouMessage" style="font-weight: bold; font-size: 1.2rem; color: #2f4f4f;">
         💌 حابين تشاركوا لحظتنا السعيدة؟ تأكيدك هو أول فرحة! ويسعدنا تكون جزء من قصتنا الجميلة… في انتظارك بكل حب 💖
       </p>
-      <p>
+      <div id="detailsAr">
         📍 <strong>المكان:</strong> قاعـة قصـر الصيادلة - نقابة الصيادلة - طلخا<br />
         🗓️ <strong>التاريخ:</strong> 24 يوليو 2025<br />
         🕖 <strong>الساعة:</strong> 7:00 مساءً<br />
         📌 <strong>اللوكيشن:</strong> <a href="https://g.co/kgs/47ND6P4" target="_blank" style="color: #2f4f4f;">اضغط هنا للخريطة</a><br />
         📞 <strong>للتواصل:</strong> <a href="tel:01069420990" style="color: #2f4f4f;">01069420990</a>
-      </p>
+      </div>
+      <div id="detailsEn" style="display:none">
+        📍 <strong>Venue:</strong> Pharmacists Palace Hall – Pharmacists Syndicate - Talkha<br />
+        🗓️ <strong>Date:</strong> July 24, 2025<br />
+        🕖 <strong>Time:</strong> 7:00 PM<br />
+        📌 <strong>Location:</strong> <a href="https://g.co/kgs/47ND6P4" target="_blank" style="color: #2f4f4f;">Click here for map</a><br />
+        📞 <strong>Contact:</strong> <a href="tel:01069420990" style="color: #2f4f4f;">01069420990</a>
+      </div>
+
       <a class="add-calendar" target="_blank" id="calendarLink"
         href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Abdelrahman%20%26%20Amaal%20Wedding&dates=20250724T160000Z%2F20250724T190000Z&details=Wedding%20Party%20in%20Talkha%20at%20Pharmacists%20Palace%20Hall&location=Pharmacists%20Palace%20Hall%20Talkha&sf=true&output=xml">
         <i class="fas fa-calendar-plus"></i> إضافة للتقويم
@@ -383,11 +438,13 @@
   <script>
     const form = document.getElementById('rsvpForm');
     const message = document.getElementById('confirmationMessage');
+    let currentLanguage = 'ar';
 
     form.addEventListener('submit', function (event) {
       event.preventDefault();
       message.style.display = 'block';
       form.style.display = 'none';
+      createConfetti();
     });
 
     function startCountdown() {
@@ -397,23 +454,111 @@
         const now = new Date().getTime();
         const distance = targetDate - now;
         if (distance < 0) {
-          countdown.innerHTML = "🎊 حان وقت الزفاف! 🎊";
+          countdown.innerHTML = currentLanguage === 'ar' ? "🎊 حان وقت الزفاف! 🎊" : "🎊 It's wedding time! 🎊";
           return;
         }
         const days = Math.floor(distance / (1000 * 60 * 60 * 24));
         const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
         const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
         const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-        countdown.innerHTML = `⏳ ${days} يوم ${hours} ساعة ${minutes} دقيقة ${seconds} ثانية حتى الزفاف!`;
+        countdown.innerHTML = currentLanguage === 'ar'
+          ? `⏳ ${days} يوم ${hours} ساعة ${minutes} دقيقة ${seconds} ثانية حتى الزفاف!`
+          : `⏳ ${days}d ${hours}h ${minutes}m ${seconds}s left until the wedding!`;
       }, 1000);
     }
 
     function switchLanguage(lang) {
-      // يمكنك إضافة ترجمة إذا احتجت
+      currentLanguage = lang;
+      const arBtn = document.getElementById('arBtn');
+      const enBtn = document.getElementById('enBtn');
+
+      document.documentElement.setAttribute('lang', lang);
+      document.documentElement.setAttribute('dir', lang === 'ar' ? 'rtl' : 'ltr');
+
+      const translations = {
+        ar: {
+          title: '👰🏻‍♀️🤵🏻💍❤️ مدعوون لحفل الزفاف!',
+          intro: 'انضموا إلينا للاحتفال بزفاف <strong>عبدالرحمن وآمال</strong>',
+          namePlaceholder: 'الاسم',
+          phonePlaceholder: 'رقم الهاتف',
+          guestsDefaultOption: 'عدد الحضور',
+          guestOptions: ['شخص واحد', 'شخصان', '3 أشخاص', '4 أشخاص', '5 أشخاص', 'أكثر من 5'],
+          attendingDefaultOption: 'هل ستتمكن من الحضور؟',
+          attendingOptions: ['نعم، سأحضر', 'للأسف، لن أتمكن من الحضور'],
+          messagePlaceholder: 'رسالة خاصة (اختياري)',
+          submitButton: '<i class="fas fa-check"></i> تأكيد الحضور',
+          calendarLink: '<i class="fas fa-calendar-plus"></i> إضافة للتقويم',
+        },
+        en: {
+          title: '👰🏻‍♀️🤵🏻💍❤️ You\'re Invited!',
+          intro: 'Join us to celebrate the wedding of <strong>Abdelrahman & Amaal</strong>',
+          namePlaceholder: 'Your Name',
+          phonePlaceholder: 'Phone Number',
+          guestsDefaultOption: 'Number of Guests',
+          guestOptions: ['1 Person', '2 People', '3 People', '4 People', '5 People', 'More than 5'],
+          attendingDefaultOption: 'Will you be able to attend?',
+          attendingOptions: ['Yes, I will attend', 'Unfortunately, I cannot attend'],
+          messagePlaceholder: 'Special Message (Optional)',
+          submitButton: '<i class="fas fa-check"></i> Confirm Attendance',
+          calendarLink: '<i class="fas fa-calendar-plus"></i> Add to Calendar',
+        }
+      };
+
+      const currentTranslations = translations[lang];
+
+      document.getElementById('title').innerHTML = currentTranslations.title;
+      document.getElementById('intro').innerHTML = currentTranslations.intro;
+      document.getElementById('name').placeholder = currentTranslations.namePlaceholder;
+      document.getElementById('phone').placeholder = currentTranslations.phonePlaceholder;
+      document.getElementById('message').placeholder = currentTranslations.messagePlaceholder;
+      document.getElementById('submitButton').innerHTML = currentTranslations.submitButton;
+      document.getElementById('calendarLink').innerHTML = currentTranslations.calendarLink;
+
+      const guestsSelect = document.getElementById('guests');
+      guestsSelect.innerHTML = `<option value="">${currentTranslations.guestsDefaultOption}</option>`;
+      const guestValues = ["1", "2", "3", "4", "5", "more"];
+      currentTranslations.guestOptions.forEach((optionText, index) => {
+        guestsSelect.innerHTML += `<option value="${guestValues[index]}">${optionText}</option>`;
+      });
+
+      const attendingSelect = document.getElementById('attending');
+      attendingSelect.innerHTML = `<option value="" disabled selected>${currentTranslations.attendingDefaultOption}</option>`;
+      const attendingValues = ["yes", "no"];
+      currentTranslations.attendingOptions.forEach((optionText, index) => {
+        attendingSelect.innerHTML += `<option value="${attendingValues[index]}">${optionText}</option>`;
+      });
+
+      document.getElementById(lang === 'ar' ? 'detailsAr' : 'detailsEn').style.display = 'block';
+      document.getElementById(lang === 'ar' ? 'detailsEn' : 'detailsAr').style.display = 'none';
+
+      arBtn.classList.toggle('active', lang === 'ar');
+      enBtn.classList.toggle('active', lang === 'en');
+
+      startCountdown();
+    }
+
+    function createConfetti() {
+      const colors = ['#90ee90', '#ffb6c1', '#ff6b9d', '#98fb98', '#ffffff'];
+      const confettiCount = 100;
+      for (let i = 0; i < confettiCount; i++) {
+        const confettiPiece = document.createElement('div');
+        confettiPiece.className = 'confetti';
+        confettiPiece.style.left = Math.random() * 100 + 'vw';
+        confettiPiece.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+        confettiPiece.style.animationDuration = (Math.random() * 2 + 2) + 's';
+        confettiPiece.style.animationDelay = (Math.random() * 1) + 's';
+        confettiPiece.innerHTML = '❤️';
+        document.body.appendChild(confettiPiece);
+        setTimeout(() => {
+          confettiPiece.remove();
+        }, 4000);
+      }
     }
 
     function shareOnWhatsApp() {
-      const text = 'مدعوون لحضور زفاف عبدالرحمن وآمال - 24 يوليو 2025. لمزيد من التفاصيل: ';
+      const text = currentLanguage === 'ar' 
+        ? 'مدعوون لحضور زفاف عبدالرحمن وآمال - 24 يوليو 2025. لمزيد من التفاصيل: '
+        : 'You\'re invited to Abdelrahman & Amaal\'s wedding - July 24, 2025. For more details: ';
       window.open(`https://wa.me/?text=${encodeURIComponent(text + window.location.href)}`, '_blank');
     }
 
@@ -422,14 +567,17 @@
     }
 
     function shareOnTelegram() {
-      const text = 'مدعوون لحضور زفاف عبدالرحمن وآمال - 24 يوليو 2025';
+      const text = currentLanguage === 'ar' 
+        ? 'مدعوون لحضور زفاف عبدالرحمن وآمال - 24 يوليو 2025'
+        : 'You\'re invited to Abdelrahman & Amaal\'s wedding - July 24, 2025';
       window.open(`https://t.me/share/url?url=${encodeURIComponent(window.location.href)}&text=${encodeURIComponent(text)}`, '_blank');
     }
 
     document.addEventListener('DOMContentLoaded', function() {
       startCountdown();
-      // إضافة أوراق عشوائية أكثر
+      switchLanguage('ar');
       const leafContainer = document.getElementById('leafContainer');
+      const flowerContainer = document.getElementById('flowerContainer');
       for (let i = 0; i < 15; i++) {
         const leaf = document.createElement('div');
         leaf.className = 'leaf';
@@ -438,6 +586,15 @@
         leaf.style.animationDelay = Math.random() * 10 + 's';
         leaf.innerHTML = '🍃';
         leafContainer.appendChild(leaf);
+      }
+      for (let i = 0; i < 10; i++) {
+        const flower = document.createElement('div');
+        flower.className = 'flower';
+        flower.style.left = Math.random() * 100 + '%';
+        flower.style.top = Math.random() * 100 + '%';
+        flower.style.animationDelay = Math.random() * 12 + 's';
+        flower.innerHTML = '🌸';
+        flowerContainer.appendChild(flower);
       }
     });
   </script>
